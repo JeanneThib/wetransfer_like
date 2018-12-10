@@ -1,5 +1,7 @@
 <?php
 
+require_once 'connect.php';
+
 function filmGenre() {
     global $twig, $id, $base_url, $genres, $tri, $select, $isGenre;
     $select = true;
