@@ -1,11 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-</body>
-</html>
+<?php 
+
+require_once 'vendor/autoload.php';
+$loader = new Twig_Loader_Filesystem('view');
+$twig = new Twig_Environment($loader, array(
+    'cache' => false,
+));
+
+$requete = explode("/", trim($_SERVER['REQUEST_URI'], "/"));
+$controller = (count($requete) === 1) ? "default" : $requete[1];
+$action = (count($requete) < 3)? "default" : $requete[2];
+$id = (count($requete) < 4) ? 0 : (int)$requete[3]; 
+
+switch ($controller) {
+    
+    
+    case 'download':
+    require_once('controller/ctrl_download.php');
+    break;
+    
+    case 'admin':
+    require_once('controller/ctrl_admin.php');
+    break;
+
+    default:
+        require_once('controller/ctrl_main.php');
+        break;
+}
