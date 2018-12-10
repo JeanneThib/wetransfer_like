@@ -1,0 +1,12 @@
+{
+    "name": "stagiaire/wetransfer_like",
+    "authors": [
+        {
+            "name": "JeanneThib",
+            "email": "jeanne.t@codeur.online"
+        }
+    ],
+    "require": {
+        "twig/twig": "^2.0"
+    }
+}
