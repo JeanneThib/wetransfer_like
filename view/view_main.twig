@@ -10,15 +10,14 @@
 
 <body>
 
-<form method="post" action="reception.php" enctype="multipart/form-data">
+{# <form method="post" action="reception.php" enctype="multipart/form-data"> #}
 <label for="fichier">Fichier (tous formats | max. 1 Mo) :</label><br />
 <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
 <input type="file" name="fichier" id="fichier" /><br />
-<input type="text" placeholder="Email destinataire"></input>
+<input id="mail" type="text" placeholder="Email destinataire"></input>
 <input type="text" placeholder="Email Copie"></input>
-<button> Envoyer </button>
-</form>
-
+<button id="envoi"> Envoyer </button>
+{# </form> #}
 <script src="js/mail.js"></script>
 </body>
 

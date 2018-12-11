@@ -12,7 +12,7 @@ $boundary = "-----=".md5(rand());
 //==========
  
 //=====Définition du sujet.
-$sujet = "WeTranfer";
+$sujet = "WeTransfer";
 //=========
  
 //=====Création du header de l'e-mail.
@@ -36,5 +36,7 @@ $message.= $passage_ligne."--".$boundary."--".$passage_ligne;
 //==========
  
 //=====Envoi de l'e-mail.
-mail('antonin.l@codeur.online','test','message');
+$test = mail($mail,$sujet,$message, $header);
+var_dump($test);
+echo 'test envoie de mail';
 }

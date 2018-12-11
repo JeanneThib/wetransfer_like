@@ -8,7 +8,6 @@ $twig = new Twig_Environment($loader);
 
 function myFunction() {
     global $twig;
-
     echo $twig->render('view_main.twig',
     array('test' => $test));
 };
