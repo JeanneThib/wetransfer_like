@@ -25,5 +25,22 @@ $nom = 'localhost/wetransfer_like/cloud/'.$nom;
 $resultat = move_uploaded_file($_FILES['fichier']['tmp_name'],'../cloud/' .basename($_FILES['fichier']['name']));
 if ($resultat) echo "Transfert réussi";
 
+// ====== ENVOI MAIL =====
 
+
+ini_set( 'display_errors', 1 );
+
+error_reporting( E_ALL );
+
+$from = "test.form@gmail.com";
+
+$to = $_POST["destinataire"];
+
+$subject = "Vérification PHP mail";
+
+$message = "Mail envoyé depuis WeTransfer_like Groupe 2";
+
+$headers = "From:" . $from;
+
+mail($to,$subject,$message, $headers);
 ?>
