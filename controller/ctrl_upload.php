@@ -1,4 +1,7 @@
 <?php
+
+require_once "mdl_upload";
+
 $_FILES['fichier']['name'];     //Le nom original du fichier, comme sur le disque du visiteur (exemple : mon_icone.png).
 $_FILES['fichier']['type'];     //Le type du fichier. Par exemple, cela peut être « image/png ».
 $_FILES['fichier']['size'];     //La taille du fichier en octets.
