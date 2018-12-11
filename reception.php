@@ -16,15 +16,17 @@ if ($_FILES['fichier']['error'] > 0) $erreur = "Erreur lors du transfert";
 if ($_FILES['fichier']['size'] > $maxsize) $erreur = "Le fichier est trop gros";
 
 
-$extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
+
 //1. strrchr renvoie l'extension avec le point (« . »).
 //2. substr(chaine,1) ignore le premier caractère de chaine.
 //3. strtolower met l'extension en minuscules.
-$extension_upload = strtolower(  substr(  strrchr($_FILES['fichier']['name'], '.')  ,1)  );
-if ( in_array($extension_upload,$extensions_valides) ) echo "Extension correcte";
+// $extension_upload = strtolower(  substr(  strrchr($_FILES['fichier']['name'], '.')  ,1)  );
+// if ( in_array($extension_upload,$extensions_valides) ) echo "Extension correcte";
 
 $image_sizes = getimagesize($_FILES['fichier']['tmp_name']);
 if ($image_sizes[0] > $maxwidth OR $image_sizes[1] > $maxheight) $erreur = "Image trop grande";
+
+
 
 
 
@@ -35,7 +37,7 @@ if ($image_sizes[0] > $maxwidth OR $image_sizes[1] > $maxheight) $erreur = "Imag
 
 
 
-$nom = 'localhost/wetransfer_like/cloud/'.$nom.".".$extension_upload;
+$nom = 'localhost/wetransfer_like/cloud/'.$nom;
 
 
 $resultat = move_uploaded_file($_FILES['fichier']['tmp_name'],'../wetransfer_like/cloud/' .basename($_FILES['fichier']['name']));
