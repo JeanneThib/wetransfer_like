@@ -7,7 +7,8 @@ $twig = new Twig_Environment($loader);
 
 
 function myFunction() {
-    global $twig;
+    global $twig, $base_url;
+    $test = "test";
     echo $twig->render('view_main.twig',
     array('test' => $test));
 };
