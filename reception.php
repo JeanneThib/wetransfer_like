@@ -7,8 +7,9 @@ $_FILES['fichier']['error'];    //Le code d'erreur, qui permet de savoir si le f
 $maxsize = $_POST["MAX_FILE_SIZE"];
 $maxwidth = 1200;
 $maxheight = 700;
+ 
 
-var_dump($_FILES);
+// var_dump($_FILES);
 
 if ($_FILES['fichier']['error'] > 0) $erreur = "Erreur lors du transfert";
 
@@ -31,13 +32,16 @@ if ($image_sizes[0] > $maxwidth OR $image_sizes[1] > $maxheight) $erreur = "Imag
 //Créer un dossier 'fichiers/1/'
 mkdir ("cloud",0777,true);
 
- 
 //Créer un identifiant difficile à deviner
   $nom = md5(uniqid(rand(), true));
 
 
 
-$nom = "cloud".$nom.".".$extension_upload;
-$resultat = move_uploaded_file($_FILES['icone']['tmp_name'],$nom);
+$nom = 'localhost/wetransfer_like/cloud/'.$nom.".".$extension_upload;
+
+var_dump($nom);
+$resultat = move_uploaded_file($_FILES['fichier']['tmp_name'],'../wetransfer_like/cloud/' .basename($_FILES['fichier']['name']));
 if ($resultat) echo "Transfert réussi";
+
+var_dump($resultat);
 ?>
