@@ -22,6 +22,10 @@ switch ($controller) {
     require_once('controller/ctrl_admin.php');
     break;
 
+    case 'dashboard':
+    require_once('controller/ctrl_dashboard.php');
+    break;
+
     default:
         require_once('controller/ctrl_main.php');
         break;
