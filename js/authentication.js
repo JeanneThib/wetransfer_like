@@ -11,7 +11,7 @@ connexion.addEventListener("click", () => {
     data.append("pass", pass.value);
 
     //Ajax
-    fetch("controller/ctrl_admin.php", {method: "POST", body: data})
+    fetch("controller/ctrl_admin.php", {method: "POST", body: 'data'})
     .then( (result) => result.text() )
     .then( (result) => {
         console.log(result);
