@@ -19,7 +19,7 @@ if ($image_sizes[0] > $maxwidth OR $image_sizes[1] > $maxheight) $erreur = "Imag
 
 // Créer un identifiant difficile à deviner
 $nom = md5(uniqid(rand(), true));
-$nom = 'localhost/wetransfer_like/cloud/'.$nom;
+$nom = 'localhost:8080/wetransfer_like/cloud/'.$nom;
 
 
 $resultat = move_uploaded_file($_FILES['fichier']['tmp_name'],'../cloud/' .basename($_FILES['fichier']['name']));
@@ -43,4 +43,7 @@ $message = "Mail envoyé depuis WeTransfer_like Groupe 2";
 $headers = "From:" . $from;
 
 mail($to,$subject,$message, $headers);
+
+
+$sql = "INSERT INTO file_upload (name,path,link_id,upload_date,size,extension)VALUES ($_FILES['fichier']['name'],'../cloud/',link_id,upload_date,$_FILES['fichier']['size'],$FILES['fichier']['type'])" 
 ?>
