@@ -33,7 +33,7 @@
     function ctrl_authentication() {
 
         global $twig, $base_url, $methode, $iv, $mdp, $curr_login, $curr_pass;
-        $auth = bdd_authentication();
+        $auth = bdd_authentication($curr_login);
 
         $crypt_login = openssl_decrypt($auth[0]["login"],$methode,$mdp,0,$iv);
         $crypt_pass = openssl_decrypt($auth[0]["password"],$methode,$mdp,0,$iv);
@@ -55,7 +55,7 @@
             session_start();
 
             $_SESSION["authenticated"] = 'true';
-
+            $_SESSION["login"] = $curr_login;
             header('Location: dashboard'); 
 
             // if(empty($_SESSION["authenticated"]) || $_SESSION["authenticated"] != 'true') {
