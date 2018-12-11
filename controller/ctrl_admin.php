@@ -71,6 +71,7 @@
 
     };
     ctrl_authentication();
-}
+
+
 ?>
 
