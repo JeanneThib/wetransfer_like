@@ -1,5 +1,4 @@
 <?php
-echo exec('whoami');
 $_FILES['fichier']['name'];     //Le nom original du fichier, comme sur le disque du visiteur (exemple : mon_icone.png).
 $_FILES['fichier']['type'];     //Le type du fichier. Par exemple, cela peut être « image/png ».
 $_FILES['fichier']['size'];     //La taille du fichier en octets.
@@ -42,5 +41,22 @@ $nom = 'localhost:8080/wetransfer_like/cloud/'.$nom.".".$extension_upload;
 $resultat = move_uploaded_file($_FILES['fichier']['tmp_name'],'../wetransfer_like/cloud/' .basename($_FILES['fichier']['name']));
 if ($resultat) echo "Transfert réussi";
 
+// ====== ENVOI MAIL =====
 
+
+ini_set( 'display_errors', 1 );
+
+error_reporting( E_ALL );
+
+$from = "test.form@gmail.com";
+
+$to = $_POST["destinataire"];
+
+$subject = "Vérification PHP mail";
+
+$message = "Mail envoyé depuis WeTransfer_like Groupe 2";
+
+$headers = "From:" . $from;
+
+mail($to,$subject,$message, $headers);
 ?>
