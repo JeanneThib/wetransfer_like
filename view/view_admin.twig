@@ -2,8 +2,22 @@
 
 {% block authentication %}
 
+    <base href="{{base_url}}">
+
     <div>
-    essai {{test}}
+
+            <label for="login">Login</label>
+            <input id="login" name="login" type="text" value="test">
+
+            <label for="pass">Password</label>
+            <input id="pass" name="pass" type="password">
+
+            <button id="connexion">Connexion</button>
+
+            {# {{auth.password}} #}
+
     </div> 
+
+    <script src="js/authentication.js"></script>
 
 {% endblock %}

@@ -11,7 +11,7 @@ $twig = new Twig_Environment($loader);
 
 function myFunction() {
     global $twig;
-
+    $test = "test";
     echo $twig->render('view_download.twig',
     array('test' => $test));
 };
