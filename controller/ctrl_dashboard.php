@@ -2,6 +2,8 @@
 
 session_start();
 
+echo "Salut " . $_SESSION["login"];
+
 // if($_SESSION["authenticated"]) {
 //     echo "Vous êtes connecté";
 // } else {
