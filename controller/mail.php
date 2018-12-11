@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 
 // if (isset($_GET['envoi'])){
 
@@ -39,4 +39,6 @@
 // $test = mail($mail,$sujet,$message, $header);
 // var_dump($test);
 // echo 'test envoie de mail';
+
+
 // }
