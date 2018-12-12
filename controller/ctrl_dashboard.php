@@ -2,7 +2,7 @@
 
 session_start();
 
-echo "Salut " . $_SESSION["login"];
+echo "Bonjour " . $_SESSION["login"];
 
 // if($_SESSION["authenticated"]) {
 //     echo "Vous êtes connecté";
