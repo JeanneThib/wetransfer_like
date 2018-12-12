@@ -1,6 +1,8 @@
 <?php
 
-require_once "mdl_upload";
+require_once "model/mdl_upload.php";
+
+// UPLOAD FICHIER
 
 $_FILES['fichier']['name'];     //Le nom original du fichier, comme sur le disque du visiteur (exemple : mon_icone.png).
 $_FILES['fichier']['type'];     //Le type du fichier. Par exemple, cela peut être « image/png ».
