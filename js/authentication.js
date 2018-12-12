@@ -11,9 +11,9 @@ connexion.addEventListener("click", () => {
     data.append("login", login.value);
     data.append("pass", pass.value);
 
-    fetch("controller/ctrl_admin.php", {method: "POST", body: data})
+    fetch("/wetransfer_like/admin/verifForm", {method: "POST", body: data})
     .then( (result) => result.text() )
     .then( (result) => {
         console.log(result);
-    })
+    });
 })

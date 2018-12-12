@@ -1,6 +1,10 @@
 <?php
 // require_once "model/connect.php";
 require_once "../model/mdl_upload.php";
+echo $date = date('Y-m-d');
+$good_format=strtotime ($date);
+echo '</br>Semaine : '.date('W',$good_format);
+
 
 $_FILES['fichier']['name'];     //Le nom original du fichier, comme sur le disque du visiteur (exemple : mon_icone.png).
 $_FILES['fichier']['type'];     //Le type du fichier. Par exemple, cela peut être « image/png ».
@@ -61,12 +65,15 @@ mail($to,$subject,$message, $headers);
 // ===== SQL =====
 global $bdd;
 
-die;
-// $sql = "INSERT INTO file_upload (name,path,link_id,upload_date,size,extension) VALUES ($_FILES['fichier']['name'],'../cloud/',link_id,upload_date,$_FILES['fichier']['size'],$_FILES['fichier']['type'])" 
+$sql = "INSERT INTO file_upload (name,path,link_id,upload_date,size,extension) VALUES (:name,'../cloud/',:url,:date,:fileSize,:ext)" ;
 
-// $response = $bdd->prepare( $sql );
-// $response->bindParam(':idFilm', $idFilm, PDO::PARAM_STR);
-// $response->execute();
+$response = $bdd->prepare( $sql );
+$response->bindParam(':name', $name, PDO::PARAM_STR);
+$response->bindParam(':url', $url, PDO::PARAM_STR);
+$response->bindParam(':date', $date, PDO::PARAM_STR);
+$response->bindParam(':fileSize', $fileSize, PDO::PARAM_STR);
+$response->bindParam(':ext', $ext, PDO::PARAM_STR);
+$response->execute();
 // $response->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
