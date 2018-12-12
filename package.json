@@ -1,0 +1,24 @@
+{
+  "name": "wetransfer_like",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeanneThib/wetransfer_like.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JeanneThib/wetransfer_like/issues"
+  },
+  "homepage": "https://github.com/JeanneThib/wetransfer_like#readme",
+  "dependencies": {
+    "mjml": "^4.2.1"
+  },
+  "devDependencies": {}
+}
