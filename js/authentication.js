@@ -14,9 +14,11 @@ connexion.addEventListener("click", () => {
     fetch("/wetransfer_like/admin/verifForm", {method: "POST", body: data})
     .then( (result) => { return result.json() } )
     .then( (result) => {
-        console.log(result.error);
+        // console.log(result.error);
         if(!result.error){
             window.location.replace("/wetransfer_like/dashboard");
+        } else {
+            document.querySelector("#error").innerHTML = result.error;
         }
     });
 })
