@@ -1,6 +1,6 @@
 <?php
 
-$base_url = (strstr($_SERVER["HTTP_HOST"],"8080")=== false)?"http://locahlhost/wetransfer_like":"http://locahlhost:8080/wetransfer_like";
+$base_url = (strstr($_SERVER["HTTP_HOST"],"8080")=== false)?"http://localhost/wetransfer_like":"http://localhost:8080/wetransfer_like";
 
 $username = 'root';
 $password = 'online@2017';
