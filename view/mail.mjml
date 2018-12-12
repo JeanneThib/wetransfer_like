@@ -38,6 +38,7 @@
         <mj-text  font-size="12px" font-family="Helvetica Neue" color="#626262">Nous vous remercions pour votre confiance </mj-text>
         
         <mj-text font-size="10px" color="#525252" font-familly="Helvetica Neue">Et ne vous inquiétez pas aucun de vos fichiers ou de vos données ne seront transférés à d'autre personnes , nous mettons tout en oeuvre pour vous protéger et sécurisé vos données
+        </mj-text>
        
       </mj-column>
     </mj-section>
