@@ -1,71 +1,91 @@
 <?php
 
-   
     require_once 'model/mdl_admin.php';
-    
+            
     require_once 'vendor/autoload.php';
     
     $loader = new Twig_Loader_Filesystem('view');
     $twig = new Twig_Environment($loader);
+    
+    switch ($action) {
+        case 'verifForm':
+            verifForm();
+            break;
+        
+        default:
+            showForm();
+            break;
+    }
+    
 
-    $methode = 'aes-256-cbc';
-    $mdp = 'skW6UZx7t54n3i3F5NqzcL8H3Qx79W3e3StuREMp3BsH556trV';
-    $iv = 'Q3G43Qci7v9ZhQ9f';
+    function verifForm() {
+        
+        $error = false;
+
+        $curr_login = "";
+        $curr_pass = "";
+        
+        if(isset($_POST["login"])) {
+            $curr_login = $_POST["login"];
+        } else {
+            $error = true;
+        }
+        
+        if(isset($_POST["pass"])) {
+            $curr_pass = $_POST["pass"];
+        } else {
+            $error = true;
+        }
+
+        $methode = 'aes-256-cbc';
+        $mdp = 'skW6UZx7t54n3i3F5NqzcL8H3Qx79W3e3StuREMp3BsH556trV';
+        $iv = 'Q3G43Qci7v9ZhQ9f';
+        
+        $curr_login_encr = openssl_encrypt($curr_login,$methode,$mdp,0,$iv);
+        $curr_pass_encr = openssl_encrypt($curr_pass,$methode,$mdp,0,$iv);
+
+        $auth = bdd_authentication($curr_login_encr, $curr_pass_encr);
+
+
+        if($auth["nombre"] !== "1") {
+            $error = true;
+        }
+
+        if($error === true) {
+            $reponse = array("error"=>"Veuillez saisir correctement les identifiants");
+        } else {
+            $reponse = array("error"=>false);
+            session_start();
+            $_SESSION["authenticated"] = 'true';
+
+            // Stocke le login pour faire le message d'accueil personnalisé
+
+            // $_SESSION["login"] = $curr_login;
+        }
+        
+        echo json_encode($reponse);
+
+    }
+
+
+    function showForm() {
+        global $twig;
+        echo $twig->render('view_admin.twig');
+    }
+
+
 
     // $curr_login = "root";
     // $curr_pass = "online@2017";
-
     
-    $auth = 0;
-    
-    echo $twig->render('view_admin.twig',
-    array('auth' => $auth));
-    
-    function ctrl_authentication() {
-        
-        global $twig, $base_url, $methode, $iv, $mdp, $curr_login, $curr_pass;
 
-        $curr_login_encr = openssl_encrypt($curr_login,$methode,$mdp,0,$iv);
+    // if(empty($_SESSION["authenticated"]) || $_SESSION["authenticated"] != 'true') {
+    //     header('Location: ctrl_admin.php');
+    // }
 
-        
-        $auth = bdd_authentication($curr_login_encr);
+    // echo $twig->render('view_dashboard.twig',
+    // array('auth' => $auth));
 
-        if($auth != NULL) {
-        
-            // if(isset($auth) && $auth != NULL) {
-
-            $crypt_login = openssl_decrypt($auth[0]["login"],$methode,$mdp,0,$iv);
-            $crypt_pass = openssl_decrypt($auth[0]["password"],$methode,$mdp,0,$iv);
-
-            
-            $isLogin = !empty($crypt_login);
-            $isPassword = !empty($crypt_pass);
-            
-
-            if($curr_login === $crypt_login && $curr_pass === $crypt_pass && $isLogin && $isPassword) {
-
-                session_start();
-
-                $_SESSION["authenticated"] = 'true';
-                $_SESSION["login"] = $curr_login;
-                header('Location: dashboard'); 
-
-                // if(empty($_SESSION["authenticated"]) || $_SESSION["authenticated"] != 'true') {
-                //     header('Location: ctrl_admin.php');
-                // }
-
-                // echo $twig->render('view_dashboard.twig',
-                // array('auth' => $auth));
-
-            } else {
-                true;
-            }
-        } else {
-            true;
-        }
-
-    };
-    ctrl_authentication();
 
 
 ?>
