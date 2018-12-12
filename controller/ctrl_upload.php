@@ -34,10 +34,9 @@ $maxSize = 1048576;
     
 // Créer un identifiant difficile à deviner
 $nom = md5(uniqid(rand(), true));
-$nom = 'localhost:8080/wetransfer_like/cloud/'.$nom;
 
 
-$resultat = move_uploaded_file($_FILES['fichier']['tmp_name'],'../cloud/' .basename($_FILES['fichier']['name']));
+$resultat = move_uploaded_file($_FILES['fichier']['tmp_name'],'../cloud/' .$nom.'.'.$ext);
 if ($resultat) echo "Transfert réussi </br>";
 
 // ====== ENVOI MAIL =====
