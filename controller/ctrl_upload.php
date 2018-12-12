@@ -52,7 +52,7 @@ $to = $_POST["destinataire"];
 
 $subject = "Vérification PHP mail";
 
-$message = "Mail envoyé depuis WeTransfer_like Groupe 2";
+$message = "";
 
 $headers = "From:" . $from;
 

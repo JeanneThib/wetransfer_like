@@ -1,0 +1,47 @@
+<mjml>
+  <mj-body>
+    <mj-raw>
+       </mj-raw>
+    <mj-section background-color="#318ce7" >
+      <mj-column width="600px">
+       </mj-column>
+    </mj-section>
+    <mj-raw>
+      <!-- Company Header -->
+    </mj-raw>
+    <mj-section background-color="#fafafa">
+      <mj-column>
+        <mj-text align="center" font-style="italic"   font-size="20px" color="#626262">We transfer vous informes</mj-text>
+    </mj-section>
+    <mj-raw>
+      <!-- Image Header -->
+   
+      <!-- Intro text -->
+      
+      
+    </mj-raw>
+    <mj-section background-color="#fafafa">
+      <mj-column width="400px">
+        <mj-text font-style="italic" font-size="20px" font-family="Helvetica Neue" color="#626262">Bonjour,</mj-text>
+        <mj-text color="#525252">Veuillez trouver ci joint le lien pour télécharger vos fichiers ou copier/coller le lien dans votre navigateur internet </mj-text>
+        <mj-button background-color="#318ce7"href="#">Lien de téléchargement</mj-button>
+        <mj-text font-size="10px" align="center">https://www.sois-net.fr/mjml-framework-emails-responsive/</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-raw>
+
+      <!-- Side image -->
+    </mj-raw>
+        </mj-raw>
+    <mj-section background-color="#fafafa">
+      <mj-column width="400px">
+        <mj-text  font-size="12px" font-family="Helvetica Neue" color="#626262">Nous vous remercions pour votre confiance </mj-text>
+        
+        <mj-text font-size="10px" color="#525252" font-familly="Helvetica Neue">Et ne vous inquiétez pas aucun de vos fichiers ou de vos données ne seront transférés à d'autre personnes , nous mettons tout en oeuvre pour vous protéger et sécurisé vos données
+       
+      </mj-column>
+    </mj-section>
+    
+   
+  </mj-body>
+</mjml>
