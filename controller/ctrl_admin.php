@@ -6,12 +6,18 @@
     
     $loader = new Twig_Loader_Filesystem('view');
     $twig = new Twig_Environment($loader);
+
+    session_start();
     
     switch ($action) {
         case 'verifForm':
             verifForm();
             break;
-        
+
+        case 'logout':
+            deconnexion();
+            break;
+
         default:
             showForm();
             break;
@@ -52,19 +58,23 @@
         }
 
         if($error === true) {
-            $reponse = array("error"=>"Veuillez saisir correctement les identifiants");
+            $reponse = array("error"=>"Erreur dans l'identifiant ou le mot de passe");
+            $_SESSION["authenticated"] = false;
         } else {
             $reponse = array("error"=>false);
-            session_start();
-            $_SESSION["authenticated"] = 'true';
+            $_SESSION["authenticated"] = true;
 
             // Stocke le login pour faire le message d'accueil personnalisé
-
-            // $_SESSION["login"] = $curr_login;
         }
         
         echo json_encode($reponse);
 
+    }
+
+    function deconnexion() {
+        session_unset();    
+        session_destroy(); 
+        header('Location: /wetransfer_like');
     }
 
 
