@@ -61,7 +61,7 @@ if ($resultat){
     // Chemin d'acces du fichier
     $url = $nom.'.'.$ext;
 };
-echo strlen($url);
+
 // ===== ENVOI BDD =====
 insertDB($name, $url, $date, $fileSize, $ext);
 
@@ -73,7 +73,8 @@ error_reporting( E_ALL );
 
 $from = "test.form@gmail.com";
 
-$to = '"'.$_POST["destinataire"].'"';
+$to = '"'.$_POST["destinataire"].','.$_POST["destinataire2"].'"';
+echo $to;
 
 $subject = "Vérification PHP mail";
 
