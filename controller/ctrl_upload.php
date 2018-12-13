@@ -46,8 +46,8 @@ $maxSize = 1048576;
     echo '<b>Taille en Octets : </b>'.$fileSize.'</br>';
     echo '</br>';
     
-    if ($_FILES['fichier']['error'] > 0) $erreur = "Erreur lors du transfert";
-    if ($_FILES['fichier']['size'] > $maxSize) $erreur = "Le fichier est trop gros";
+    // if ($_FILES['fichier']['error'] > 0) $erreur = "Erreur lors du transfert";
+    // if ($_FILES['fichier']['size'] > $maxSize) $erreur = "Le fichier est trop gros";
 
     // $image_sizes = getimagesize($_FILES['fichier']['tmp_name']);
     // if ($image_sizes[0] > $maxWidth OR $image_sizes[1] > $maxHeight) $erreur = "Image trop grande";
@@ -68,7 +68,6 @@ $full = $ms . '-' . $nom;
 $filename = $_SERVER["DOCUMENT_ROOT"].'/'.'wetransfer_like/cloud/' .$full.'.'.$ext;
 
 // echo '</br>' . !file_exists($filename) . '</br>';
-
 if(!file_exists($filename)) {
 $resultat = move_uploaded_file($_FILES['fichier']['tmp_name'],$_SERVER["DOCUMENT_ROOT"]."/".'wetransfer_like/cloud/' .$full.'.'.$ext);
 } else {
@@ -87,7 +86,7 @@ if ($resultat){
 };
 
 // ===== ENVOI BDD =====
-// insertDB($name, $url, $date, $fileSize, $ext);
+insertDB($name, $url, $date, $fileSize, $ext);
 
 // ====== ENVOI MAIL =====
 
@@ -97,8 +96,9 @@ error_reporting( E_ALL );
 
 $from = "test.form@gmail.com";
 
-$to = '"'.$_POST["destinataire"].','.$_POST["destinataire2"].'"';
-echo $to;
+$to = '"'.$_POST["destinataire"].', '.$_POST["destinataire2"].'"';
+
+var_dump($to);
 
 $subject = "Vérification PHP mail";
 
