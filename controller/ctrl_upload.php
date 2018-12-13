@@ -7,6 +7,10 @@ $loader = new Twig_Loader_Filesystem('../view');
 $twig = new Twig_Environment($loader);
 
 
+
+// echo '</br>' . $ms;
+
+
 $_FILES['fichier']['name'];     //Le nom original du fichier, comme sur le disque du visiteur (exemple : mon_icone.png).
 $_FILES['fichier']['type'];     //Le type du fichier. Par exemple, cela peut être « image/png ».
 $_FILES['fichier']['size'];     //La taille du fichier en octets.
@@ -50,20 +54,40 @@ $maxSize = 1048576;
     
     
 // Créer un identifiant difficile à deviner
-$nom = md5(uniqid(rand(), true));
+$ms = round(microtime(true) * 1000);
+$nom = sha1(uniqid(rand(), true));
+$full = $ms . '-' . $nom;
 
-// Enregistrement du fichier
-$resultat = move_uploaded_file($_FILES['fichier']['tmp_name'],'../cloud/' .$nom.'.'.$ext);
+// echo '</br>' . $full . '</br>';
+
+// chmod("../cloud", 0777);
+// if (!file_exists('cloud')) {
+    // mkdir('cloud', 0777, true);
+// }
+
+$filename = $_SERVER["DOCUMENT_ROOT"].'/'.'wetransfer_like/cloud/' .$full.'.'.$ext;
+
+// echo '</br>' . !file_exists($filename) . '</br>';
+
+if(!file_exists($filename)) {
+$resultat = move_uploaded_file($_FILES['fichier']['tmp_name'],$_SERVER["DOCUMENT_ROOT"]."/".'wetransfer_like/cloud/' .$full.'.'.$ext);
+} else {
+    while(file_exists($_SERVER["DOCUMENT_ROOT"]."/".'wetransfer_like/cloud/' .$full.'.'.$ext)) {
+        $ms = round(microtime(true) * 1000);
+        $nom = sha1(uniqid(rand(), true));
+        $full = $ms . '-' . $nom;
+    }
+    $resultat = move_uploaded_file($_FILES['fichier']['tmp_name'],$_SERVER["DOCUMENT_ROOT"]."/".'wetransfer_like/cloud/' .$full.'.'.$ext);
+}
 
 // Si $resultat = true
 if ($resultat){
     echo "Transfert réussi </br>";
-    // Chemin d'acces du fichier
-    $url = $nom.'.'.$ext;
+    $url = 'cloud/' .$nom.'.'.$ext;
 };
 
 // ===== ENVOI BDD =====
-insertDB($name, $url, $date, $fileSize, $ext);
+// insertDB($name, $url, $date, $fileSize, $ext);
 
 // ====== ENVOI MAIL =====
 
@@ -80,14 +104,13 @@ $subject = "Vérification PHP mail";
 
 
 // Déclaration du message en HTML
-$message_html = $twig->render('mail.twig',array("url" => $url, "sender" => $sender, "message" => $message));
+$message_html = $twig->render('mail.twig',array("url" => $url));
 // Passage à la ligne
 $passage_ligne = "\n";
 // Création de la boundary
 $boundary = "-----=".md5(rand());
 // Création du header de l'email
 $header = "From: \"Moi-même\"<".$from.">".$passage_ligne;
-$header.= "Reply-to: \"WeaponsB\" <".$from.">".$passage_ligne;
 $header.= "MIME-Version: 1.0".$passage_ligne;
 $header .= "Content-Type: text/html; charset=\"UTF8\"";
 // Création du message
