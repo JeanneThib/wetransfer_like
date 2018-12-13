@@ -28,11 +28,11 @@ function showDownload() {
 
 
 if(isset($_REQUEST["file"])){
-    // Get parameters
+    // Récupération des paramètres du fichier
     $file = $_REQUEST["file"];
     $filepath = "cloud/" . $file;
     
-    // Process download
+    // Code pour téléchargement
     if(file_exists($filepath)) {
         header('Content-Description: File Transfer');
         header('Content-Type: application/octet-stream');
