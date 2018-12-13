@@ -97,8 +97,8 @@ error_reporting( E_ALL );
 
 $from = "test.form@gmail.com";
 
-$to = '"'.$_POST["destinataire"].','.$_POST["destinataire2"].'"';
-echo $to;
+$to = $_POST["destinataire"].', '.$_POST["destinataire2"];
+
 
 $subject = "Vérification PHP mail";
 
