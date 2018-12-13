@@ -6,6 +6,7 @@ require_once '../vendor/autoload.php';
 $loader = new Twig_Loader_Filesystem('../view');
 $twig = new Twig_Environment($loader);
 
+$erreur = "";
 
 
 // echo '</br>' . $ms;
@@ -37,7 +38,7 @@ $name = substr($_FILES['fichier']['name'], 0, -strlen($ext)-1 );
 $fileSize = $_FILES['fichier']['size'];
 
 // Taille maximale autorisée en octets (1Mo)
-$maxSize = 1048576;
+$maxSize = 2048576;
 
     echo '</br>';
     echo '<b>Nom brut : </b>'.$fullName.'</br>';
@@ -46,9 +47,13 @@ $maxSize = 1048576;
     echo '<b>Taille en Octets : </b>'.$fileSize.'</br>';
     echo '</br>';
     
-    if ($_FILES['fichier']['error'] > 0) $erreur = "Erreur lors du transfert";
-    if ($_FILES['fichier']['size'] > $maxSize) $erreur = "Le fichier est trop gros";
+    if ($_FILES['fichier']['error'] > 0) {
+        $erreur = "Erreur lors du transfert";
+    }
 
+    if ($_FILES['fichier']['size'] > $maxSize) {
+        $erreur = "Le fichier est trop gros";
+    }
     // $image_sizes = getimagesize($_FILES['fichier']['tmp_name']);
     // if ($image_sizes[0] > $maxWidth OR $image_sizes[1] > $maxHeight) $erreur = "Image trop grande";
     
