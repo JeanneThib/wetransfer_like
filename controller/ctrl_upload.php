@@ -41,7 +41,7 @@ $nom = md5(uniqid(rand(), true));
 
 $resultat = move_uploaded_file($_FILES['fichier']['tmp_name'],'../cloud/' .$nom.'.'.$ext);
 
-if ($resultat){ 
+if ($resultat){
     echo "Transfert réussi </br>";
     $url = '../cloud/' .$nom.'.'.$ext;
 };
