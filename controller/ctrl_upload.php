@@ -1,6 +1,10 @@
 <?php
 // require_once "../model/connect.php";
 require_once "../model/mdl_upload.php";
+require_once '../vendor/autoload.php';
+
+$loader = new Twig_Loader_Filesystem('../view');
+$twig = new Twig_Environment($loader);
 
 
 $_FILES['fichier']['name'];     //Le nom original du fichier, comme sur le disque du visiteur (exemple : mon_icone.png).
@@ -59,37 +63,37 @@ if ($resultat){
 };
 echo strlen($url);
 // ===== ENVOI BDD =====
-
 insertDB($name, $url, $date, $fileSize, $ext);
 
 // ====== ENVOI MAIL =====
 
-// Déclaration de l'adresse de destination.
-$mail = 'antonin.l@codeur.online'; 
-//=====Déclaration des messages au format HTML.
-$message_html = "<html><head></head><body><div></div><b>Message de test</b><br></body></html>";
-//==========
+ini_set( 'display_errors', 1 );
+
+error_reporting( E_ALL );
+
+$from = "test.form@gmail.com";
+
+$to = '"'.$_POST["destinataire"].'"';
+
+$subject = "Vérification PHP mail";
+
+
+// Déclaration du message en HTML
+$message_html = $twig->render('mail.twig',array("url" => $url, "sender" => $sender, "message" => $message));
+// Passage à la ligne
 $passage_ligne = "\n";
-//=====Création de la boundary
+// Création de la boundary
 $boundary = "-----=".md5(rand());
-//==========
-
-//=====Définition du sujet.
-$sujet = "Message provenant de l'avatar";
-//=========
-
-//=====Création du header de l'e-mail.
-$header = "From: \"Moi-même\"<testdemail@mail.fr>".$passage_ligne;
-$header.= "Reply-to: \"WeaponsB\" <weaponsb@mail.fr>".$passage_ligne;
+// Création du header de l'email
+$header = "From: \"Moi-même\"<".$from.">".$passage_ligne;
+$header.= "Reply-to: \"WeaponsB\" <".$from.">".$passage_ligne;
 $header.= "MIME-Version: 1.0".$passage_ligne;
-$header.= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
-//==========
-
-//=====Création du message.
+$header .= "Content-Type: text/html; charset=\"UTF8\"";
+// Création du message
 $message = $passage_ligne."--".$boundary.$passage_ligne;
-//==========
+
 $message.= $passage_ligne."--".$boundary.$passage_ligne;
-//=====Ajout du message au format HTML
+// Ajout du message au format HTML
 $message.= "Content-Type: text/html; charset=\"ISO-8859-1\"".$passage_ligne;
 $message.= "Content-Transfer-Encoding: 8bit".$passage_ligne;
 $message.= $passage_ligne.$message_html.$passage_ligne;
@@ -98,6 +102,7 @@ $message.= $passage_ligne."--".$boundary."--".$passage_ligne;
 $message.= $passage_ligne."--".$boundary."--".$passage_ligne;
 //==========
 
-//=====Envoi de l'e-mail.
-mail($mail,$sujet,$message,$header);
+// Envoi de l'email
+mail($to,$subject,$message_html, $header);
+
 ?>
