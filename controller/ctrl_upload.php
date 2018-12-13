@@ -61,9 +61,9 @@ if ($resultat){
     // Chemin d'acces du fichier
     $url = $nom.'.'.$ext;
 };
-echo strlen($url);
+
 // ===== ENVOI BDD =====
-insertDB($name, $url, $date, $fileSize, $ext);
+// insertDB($name, $url, $date, $fileSize, $ext);
 
 // ====== ENVOI MAIL =====
 
@@ -73,20 +73,20 @@ error_reporting( E_ALL );
 
 $from = "test.form@gmail.com";
 
-$to = '"'.$_POST["destinataire"].'"';
+$to = '"'.$_POST["destinataire"].','.$_POST["destinataire2"].'"';
+echo $to;
 
 $subject = "Vérification PHP mail";
 
 
 // Déclaration du message en HTML
-$message_html = $twig->render('mail.twig',array("url" => $url, "sender" => $sender, "message" => $message));
+$message_html = $twig->render('mail.twig',array("url" => $url));
 // Passage à la ligne
 $passage_ligne = "\n";
 // Création de la boundary
 $boundary = "-----=".md5(rand());
 // Création du header de l'email
 $header = "From: \"Moi-même\"<".$from.">".$passage_ligne;
-$header.= "Reply-to: \"WeaponsB\" <".$from.">".$passage_ligne;
 $header.= "MIME-Version: 1.0".$passage_ligne;
 $header .= "Content-Type: text/html; charset=\"UTF8\"";
 // Création du message
