@@ -55,9 +55,9 @@ $resultat = move_uploaded_file($_FILES['fichier']['tmp_name'],'../cloud/' .$nom.
 if ($resultat){
     echo "Transfert réussi </br>";
     // Chemin d'acces du fichier
-    $url = '../cloud/' .$nom.'.'.$ext;
+    $url = $nom.'.'.$ext;
 };
-
+echo strlen($url);
 // ===== ENVOI BDD =====
 
 insertDB($name, $url, $date, $fileSize, $ext);

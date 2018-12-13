@@ -2,8 +2,8 @@
 -- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Client :  localhost:3306
--- Généré le :  Jeu 13 Décembre 2018 à 09:22
+-- Client :  localhost
+-- Généré le :  Jeu 13 Décembre 2018 à 11:37
 -- Version du serveur :  10.3.11-MariaDB-1:10.3.11+maria~bionic-log
 -- Version de PHP :  7.2.10-0ubuntu0.18.04.1
 
@@ -60,9 +60,9 @@ CREATE TABLE `file_download` (
 
 CREATE TABLE `file_upload` (
   `id` int(4) NOT NULL,
-  `name` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(110) COLLATE utf8_unicode_ci DEFAULT NULL,
   `path` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `link_id` int(4) DEFAULT NULL,
+  `link_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `upload_date` date DEFAULT NULL,
   `size` int(4) DEFAULT NULL,
   `extension` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL
@@ -73,10 +73,10 @@ CREATE TABLE `file_upload` (
 --
 
 INSERT INTO `file_upload` (`id`, `name`, `path`, `link_id`, `upload_date`, `size`, `extension`) VALUES
-(1, '', '../cloud/', NULL, '2018-12-13', 0, ''),
-(2, 'chat', '../cloud/', NULL, '2018-12-13', 19586, 'jpg'),
-(3, 'chat', '../cloud/', NULL, '2018-12-13', 19586, 'jpg'),
-(4, 'chat', '../cloud/', NULL, '2018-12-13', 19586, 'jpg');
+(1, 'landscape', '../cloud/', '0', '2018-12-13', 130234, 'jpg'),
+(2, 'landscape', '../cloud/', '0', '2018-12-13', 130234, 'jpg'),
+(3, 'landscape', '../cloud/', '1bff14828938d837be96f24175376f78.jpg', '2018-12-13', 130234, 'jpg'),
+(4, 'landscape', '../cloud/', 'b33fe7068923173ea75bb0c9ed101d4c.jpg', '2018-12-13', 130234, 'jpg');
 
 --
 -- Index pour les tables exportées
