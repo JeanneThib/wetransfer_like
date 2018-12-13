@@ -6,6 +6,26 @@ require_once 'vendor/autoload.php';
 $loader = new Twig_Loader_Filesystem('view');
 $twig = new Twig_Environment($loader);
 
+switch ($action) {
+    case 'show':
+        showDownload();
+        break;
+    
+    default:
+        show404();
+        break;
+}
+
+function show404() {
+    global $twig;
+    echo $twig->render('view_404.twig');
+}
+
+function showDownload() {
+    global $twig;
+    echo $twig->render('view_download.twig');
+}
+
 
 if(isset($_REQUEST["file"])){
     // Get parameters
@@ -26,13 +46,13 @@ if(isset($_REQUEST["file"])){
         exit;
     }
 }
-function myFunction() {
-    global $twig;
-    $test = "test";
-    echo $twig->render('view_download.twig',
-    array('test' => $test));
-};
 
-myFunction();
+// function myFunction() {
+//     global $twig;
+//     $test = "test";
+//     echo $twig->render('view_download.twig',
+//     array('test' => $test));
+// };
+
 
 ?>
