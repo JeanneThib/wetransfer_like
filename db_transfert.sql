@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Lun 10 Décembre 2018 à 14:17
+-- Généré le :  Jeu 13 Décembre 2018 à 09:22
 -- Version du serveur :  10.3.11-MariaDB-1:10.3.11+maria~bionic-log
 -- Version de PHP :  7.2.10-0ubuntu0.18.04.1
 
@@ -37,7 +37,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `login`, `password`) VALUES
-(1, 'root', 'online@2017');
+(1, 'yYquLShOyHnwMw52C/a2YA==', 'n4lAjRnx5Po2dBTQ9I2naw==');
 
 -- --------------------------------------------------------
 
@@ -67,6 +67,16 @@ CREATE TABLE `file_upload` (
   `size` int(4) DEFAULT NULL,
   `extension` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `file_upload`
+--
+
+INSERT INTO `file_upload` (`id`, `name`, `path`, `link_id`, `upload_date`, `size`, `extension`) VALUES
+(1, '', '../cloud/', NULL, '2018-12-13', 0, ''),
+(2, 'chat', '../cloud/', NULL, '2018-12-13', 19586, 'jpg'),
+(3, 'chat', '../cloud/', NULL, '2018-12-13', 19586, 'jpg'),
+(4, 'chat', '../cloud/', NULL, '2018-12-13', 19586, 'jpg');
 
 --
 -- Index pour les tables exportées
@@ -108,7 +118,7 @@ ALTER TABLE `file_download`
 -- AUTO_INCREMENT pour la table `file_upload`
 --
 ALTER TABLE `file_upload`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
