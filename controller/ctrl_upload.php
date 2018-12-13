@@ -7,6 +7,10 @@ $week = strtotime ($date);
 echo '</br>Semaine : '.date('W',$week);
 
 
+
+// echo '</br>' . $ms;
+
+
 $_FILES['fichier']['name'];     //Le nom original du fichier, comme sur le disque du visiteur (exemple : mon_icone.png).
 $_FILES['fichier']['type'];     //Le type du fichier. Par exemple, cela peut être « image/png ».
 $_FILES['fichier']['size'];     //La taille du fichier en octets.
@@ -37,13 +41,35 @@ $maxSize = 1048576;
     
     
 // Créer un identifiant difficile à deviner
-$nom = md5(uniqid(rand(), true));
+$ms = round(microtime(true) * 1000);
+$nom = sha1(uniqid(rand(), true));
+$full = $ms . '-' . $nom;
 
-$resultat = move_uploaded_file($_FILES['fichier']['tmp_name'],'../cloud/' .$nom.'.'.$ext);
+// echo '</br>' . $full . '</br>';
+
+// chmod("../cloud", 0777);
+// if (!file_exists('cloud')) {
+    // mkdir('cloud', 0777, true);
+// }
+
+$filename = $_SERVER["DOCUMENT_ROOT"].'/'.'wetransfer_like/cloud/' .$full.'.'.$ext;
+
+// echo '</br>' . !file_exists($filename) . '</br>';
+
+if(!file_exists($filename)) {
+$resultat = move_uploaded_file($_FILES['fichier']['tmp_name'],$_SERVER["DOCUMENT_ROOT"]."/".'wetransfer_like/cloud/' .$full.'.'.$ext);
+} else {
+    while(file_exists($_SERVER["DOCUMENT_ROOT"]."/".'wetransfer_like/cloud/' .$full.'.'.$ext)) {
+        $ms = round(microtime(true) * 1000);
+        $nom = sha1(uniqid(rand(), true));
+        $full = $ms . '-' . $nom;
+    }
+    $resultat = move_uploaded_file($_FILES['fichier']['tmp_name'],$_SERVER["DOCUMENT_ROOT"]."/".'wetransfer_like/cloud/' .$full.'.'.$ext);
+}
 
 if ($resultat){
     echo "Transfert réussi </br>";
-    $url = '../cloud/' .$nom.'.'.$ext;
+    $url = 'cloud/' .$nom.'.'.$ext;
 };
 
 // ===== ENVOI BDD =====
