@@ -1,9 +1,10 @@
 <?php
-// require_once "model/connect.php";
+// require_once "../model/connect.php";
 require_once "../model/mdl_upload.php";
+
 echo $date = date('Y-m-d');
-$good_format=strtotime ($date);
-echo '</br>Semaine : '.date('W',$good_format);
+$week = strtotime ($date);
+echo '</br>Semaine : '.date('W',$week);
 
 
 $_FILES['fichier']['name'];     //Le nom original du fichier, comme sur le disque du visiteur (exemple : mon_icone.png).
@@ -22,29 +23,33 @@ $maxSize = 1048576;
 // $maxHeight = 700;
 
     echo '</br>';
-    echo '<b>Nom brute : </b>'.$fullName.'</br>';
+    echo '<b>Nom brut : </b>'.$fullName.'</br>';
     echo '<b>Nom sans extension : </b>'.$name.'</br>';
     echo '<b>Extension : </b>'.$ext.'</br>';
     echo '<b>Taille en Octets : </b>'.$fileSize.'</br>';
     echo '</br>';
-    
     
     if ($_FILES['fichier']['error'] > 0) $erreur = "Erreur lors du transfert";
     if ($_FILES['fichier']['size'] > $maxSize) $erreur = "Le fichier est trop gros";
 
     // $image_sizes = getimagesize($_FILES['fichier']['tmp_name']);
     // if ($image_sizes[0] > $maxWidth OR $image_sizes[1] > $maxHeight) $erreur = "Image trop grande";
-
+    
     
 // Créer un identifiant difficile à deviner
 $nom = md5(uniqid(rand(), true));
 
-
 $resultat = move_uploaded_file($_FILES['fichier']['tmp_name'],'../cloud/' .$nom.'.'.$ext);
-if ($resultat) echo "Transfert réussi </br>";
+
+if ($resultat){ 
+    echo "Transfert réussi </br>";
+    $url = '../cloud/' .$nom.'.'.$ext;
+};
+
+// ===== ENVOI BDD =====
+insertDB($name, $url, $date, $fileSize, $ext);
 
 // ====== ENVOI MAIL =====
-
 
 ini_set( 'display_errors', 1 );
 
@@ -61,19 +66,5 @@ $message = "Mail envoyé depuis WeTransfer_like Groupe 2";
 $headers = "From:" . $from;
 
 mail($to,$subject,$message, $headers);
-
-// ===== SQL =====
-global $bdd;
-
-$sql = "INSERT INTO file_upload (name,path,link_id,upload_date,size,extension) VALUES (:name,'../cloud/',:url,:date,:fileSize,:ext)" ;
-
-$response = $bdd->prepare( $sql );
-$response->bindParam(':name', $name, PDO::PARAM_STR);
-$response->bindParam(':url', $url, PDO::PARAM_STR);
-$response->bindParam(':date', $date, PDO::PARAM_STR);
-$response->bindParam(':fileSize', $fileSize, PDO::PARAM_STR);
-$response->bindParam(':ext', $ext, PDO::PARAM_STR);
-$response->execute();
-// $response->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
