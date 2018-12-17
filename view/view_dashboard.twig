@@ -1,11 +1,26 @@
 {% block authentication %}
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js">
+
     <div>
 
         <p>Bienvenue sur la page dashboard</p>
 
         <a href="/wetransfer_like/admin/logout">Déconnexion</a>
 
+        <select name="week" id="week">
+            {% for i in 1..52 %}
+                <option value={{i}}>Semaine {{i}}</option>
+            {% endfor %}
+        </select>
+
+        <canvas id="bar-chart" width="800" height="450"></canvas>
+        <canvas id="pie-chart" width="800" height="450"></canvas>
+        <canvas id="line-chart" width="800" height="450"></canvas>
+
     </div> 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+    <script src="js/chart.js"></script>
 
 {% endblock %}
