@@ -2,15 +2,14 @@
 
 require_once 'connect.php';
 
-global $bdd;
-
-$sql = "SELECT link_id FROM file_upload WHERE id" ;
+function getFile($url){
+    global $bdd;
+$sql = "SELECT name, extension, size, link_id FROM file_upload WHERE link_id = :url" ;
 
 $response = $bdd->prepare( $sql );
-$response->bindParam(':name', $name, PDO::PARAM_STR);
-$response->bindParam(':url', $url, PDO::PARAM_STR);
-$response->bindParam(':date', $date, PDO::PARAM_STR);
-$response->bindParam(':fileSize', $fileSize, PDO::PARAM_STR);
-$response->bindParam(':ext', $ext, PDO::PARAM_STR);
+$response->bindParam(':url',$url,PDO::PARAM_STR);
 $response->execute();
+$affichage = $response->fetchAll(PDO::FETCH_ASSOC);
+return $affichage;
+}
 ?>
