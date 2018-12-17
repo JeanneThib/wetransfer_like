@@ -11,7 +11,7 @@ $erreur = "";
 
 // echo '</br>' . $ms;
 
-
+echo $_SERVER["REQUEST_URI"];
 $_FILES['fichier']['name'];     //Le nom original du fichier, comme sur le disque du visiteur (exemple : mon_icone.png).
 $_FILES['fichier']['type'];     //Le type du fichier. Par exemple, cela peut être « image/png ».
 $_FILES['fichier']['size'];     //La taille du fichier en octets.
@@ -84,8 +84,8 @@ $resultat = move_uploaded_file($_FILES['fichier']['tmp_name'],$_SERVER["DOCUMENT
 } else {
     while(file_exists($_SERVER["DOCUMENT_ROOT"]."/".'wetransfer_like/cloud/' .$full.'.'.$ext)) {
         $ms = round(microtime(true) * 1000);
-        $nom = sha1(uniqid(rand(), true));
-        $full = $ms . '-' . $nom;
+        $id = sha1(uniqid(rand(), true));
+        $full = $ms . '-' . $id;
     }
     $resultat = move_uploaded_file($_FILES['fichier']['tmp_name'],$_SERVER["DOCUMENT_ROOT"]."/".'wetransfer_like/cloud/' .$full.'.'.$ext);
 }
@@ -95,11 +95,12 @@ var_dump($_FILES);
 // Si $resultat = true
 if ($resultat){
     echo "Transfert réussi </br>";
-    $url = 'cloud/' .$nom.'.'.$ext;
+    $dlLink = 'wetransfer_like/download/show/' . $full;
+    echo $id;
 };
 
 // ===== ENVOI BDD =====
-insertDB($name, $url, $date, $fileSize, $ext);
+insertDB($name, $id, $date, $fileSize, $ext);
 
 // ====== ENVOI MAIL =====
 
@@ -116,7 +117,7 @@ $subject = "Vérification PHP mail";
 
 
 // Déclaration du message en HTML
-$message_html = $twig->render('mail.twig',array("url" => $url));
+$message_html = $twig->render('mail.twig',array("url" => $dlLink));
 // Passage à la ligne
 $passage_ligne = "\n";
 // Création de la boundary
