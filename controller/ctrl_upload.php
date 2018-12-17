@@ -17,10 +17,14 @@ $_FILES['fichier']['size'];     //La taille du fichier en octets.
 $_FILES['fichier']['tmp_name']; //L'adresse vers le fichier uploadé dans le répertoire temporaire.
 $_FILES['fichier']['error'];    //Le code d'erreur, qui permet de savoir si le fichier a bien été uploadé.
 
-// Récupération de la date de d'upload
-echo $date = date('Y-m-d');
-
-// Numéro de semain en fonction de la date d'upload
+if ($_FILES['fichier']['size'] == 0 || $_FILES['fichier']['size'] > $_POST['MAX_FILE_SIZE']){
+    echo 'Taille de fichier invalide';
+} else {
+    
+    // Récupération de la date de d'upload
+    echo $date = date('Y-m-d');
+    
+    // Numéro de semain en fonction de la date d'upload
 $week = strtotime ($date);
 echo '</br>Semaine : '.date('W',$week);
 
@@ -39,6 +43,7 @@ $fileSize = $_FILES['fichier']['size'];
 // Taille maximale autorisée en octets (1Mo)
 $maxSize = 1048576;
 
+
     echo '</br>';
     echo '<b>Nom brut : </b>'.$fullName.'</br>';
     echo '<b>Nom sans extension : </b>'.$name.'</br>';
@@ -46,14 +51,16 @@ $maxSize = 1048576;
     echo '<b>Taille en Octets : </b>'.$fileSize.'</br>';
     echo '</br>';
     
+    echo ini_get('upload_max_filesize');
+    
     // if ($_FILES['fichier']['error'] > 0) $erreur = "Erreur lors du transfert";
     // if ($_FILES['fichier']['size'] > $maxSize) $erreur = "Le fichier est trop gros";
-
+    
     // $image_sizes = getimagesize($_FILES['fichier']['tmp_name']);
     // if ($image_sizes[0] > $maxWidth OR $image_sizes[1] > $maxHeight) $erreur = "Image trop grande";
     
     
-// Créer un identifiant difficile à deviner
+    // Créer un identifiant difficile à deviner
 $ms = round(microtime(true) * 1000);
 $nom = sha1(uniqid(rand(), true));
 $full = $ms . '-' . $nom;
@@ -63,11 +70,11 @@ $full = $ms . '-' . $nom;
 // chmod("../cloud", 0777);
 // if (!file_exists('cloud')) {
     // mkdir('cloud', 0777, true);
-// }
+    // }
 
-$filename = $_SERVER["DOCUMENT_ROOT"].'/'.'wetransfer_like/cloud/' .$full.'.'.$ext;
-
-// echo '</br>' . !file_exists($filename) . '</br>';
+    $filename = $_SERVER["DOCUMENT_ROOT"].'/'.'wetransfer_like/cloud/' .$full.'.'.$ext;
+    
+    // echo '</br>' . !file_exists($filename) . '</br>';
 if(!file_exists($filename)) {
 $resultat = move_uploaded_file($_FILES['fichier']['tmp_name'],$_SERVER["DOCUMENT_ROOT"]."/".'wetransfer_like/cloud/' .$full.'.'.$ext);
 } else {
@@ -128,4 +135,5 @@ $message.= $passage_ligne."--".$boundary."--".$passage_ligne;
 // Envoi de l'email
 mail($to,$subject,$message_html, $header);
 
+}
 ?>
