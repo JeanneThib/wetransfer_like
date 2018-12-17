@@ -7,18 +7,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>wetransfer Groupe 2</title>
-</head>
+    <link href="css/style.css" rel="stylesheet">
+    </head>
 
 <body>
 
-<form method="post" action="controller/ctrl_upload.php" enctype="multipart/form-data">
+{# <form method="post" action="controller/ctrl_upload.php" enctype="multipart/form-data">
 <label for="fichier">Fichier (tous formats | max. 2 Mo) :</label><br />
 <input type="file" name="fichier" id="fichier"/><br />
 <input type="hidden" name="MAX_FILE_SIZE" value="2097152"> 
 <input type="text" name="destinataire" placeholder="Email destinataire"></input>
 <input type="text" name="destinataire2" placeholder="Email Copie"></input>
 <button id="envoi"> Envoyer </button>
-</form>
+</form> #}
+
+
+<div class="container">  
+  <form id="contact" action="controller/ctrl_upload.php" method="post" enctype="multipart/form-data" >
+    <h3>Colorlib Contact Form</h3>
+    <fieldset>
+    <label for="fichier">Fichier (tous formats | max. 2 Mo) :</label><br />
+    <input type="file" name="fichier" id="fichier"/><br />
+    <input type="hidden" name="MAX_FILE_SIZE" value="2097152"> 
+    </fieldset>
+    <fieldset>
+      <input type="text" name="destinataire" placeholder="Email destinataire"></input>
+    </fieldset>
+    <fieldset>
+      <input type="text" name="destinataire2" placeholder="Email Copie"></input>
+    </fieldset>
+    <fieldset>
+      <button name="submit" type="submit" id="envoi" data-submit="...Sending">Envoyer</button>
+    </fieldset>
+  </form>
+</div>
 </body>
 
 </html>

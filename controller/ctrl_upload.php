@@ -97,6 +97,8 @@ if ($resultat){
     echo $id;
 };
 
+echo $dlLink;
+
 // ===== ENVOI BDD =====
 insertDB($name, $id, $date, $fileSize, $ext);
 
