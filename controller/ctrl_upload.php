@@ -110,7 +110,7 @@ if ($resultat){
 echo $dlLink;
 
 // ===== ENVOI BDD =====
-insertDB($name, $id, $date, $fileSize, $ext);
+insertDB($name, $full, $date, $fileSize, $ext);
 
 // ====== ENVOI MAIL =====
 
