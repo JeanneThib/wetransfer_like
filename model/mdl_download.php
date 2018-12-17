@@ -4,7 +4,7 @@ require_once 'connect.php';
 
 global $bdd;
 
-$sql = "SELECT name FROM file_upload WHERE id=1" ;
+$sql = "SELECT link_id FROM file_upload WHERE id" ;
 
 $response = $bdd->prepare( $sql );
 $response->bindParam(':name', $name, PDO::PARAM_STR);
