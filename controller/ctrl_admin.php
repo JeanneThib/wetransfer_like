@@ -84,19 +84,5 @@
     }
 
 
-
-    // $curr_login = "root";
-    // $curr_pass = "online@2017";
-    
-
-    // if(empty($_SESSION["authenticated"]) || $_SESSION["authenticated"] != 'true') {
-    //     header('Location: ctrl_admin.php');
-    // }
-
-    // echo $twig->render('view_dashboard.twig',
-    // array('auth' => $auth));
-
-
-
 ?>
 

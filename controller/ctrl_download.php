@@ -6,11 +6,32 @@ require_once 'vendor/autoload.php';
 $loader = new Twig_Loader_Filesystem('view');
 $twig = new Twig_Environment($loader);
 
+switch ($action) {
+    case 'show':
+        showDownload();
+        break;
+    
+    default:
+        show404();
+        break;
+}
 
-if(isset($_REQUEST["file"])){
+function show404() {
+    global $twig;
+    echo $twig->render('view_404.twig');
+}
+
+function showDownload() {
+    global $twig;
+    echo $twig->render('view_download.twig');
+}
+
+
+// if(isset($_REQUEST["file"])){
     // Récupération des paramètres du fichier
-    $file = $_REQUEST["file"];
-    $filepath = "cloud/" . $file;
+    // $file = $_REQUEST["file"];
+    // $filepath = "cloud/" . $file;
+    $filepath = "/wetransfer_like/cloud/1544715491906-b5b6a36c1a194b490e832f207080c3515468fd1a.jpg";
     
     // Code pour téléchargement
     if(file_exists($filepath)) {
@@ -25,14 +46,14 @@ if(isset($_REQUEST["file"])){
         readfile($filepath);
         exit;
     }
-}
-function myFunction() {
-    global $twig;
-    $test = "test";
-    echo $twig->render('view_download.twig',
-    array('test' => $test));
-};
+// }
 
-myFunction();
+// function myFunction() {
+//     global $twig;
+//     $test = "test";
+//     echo $twig->render('view_download.twig',
+//     array('test' => $test));
+// };
+
 
 ?>
