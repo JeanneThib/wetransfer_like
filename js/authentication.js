@@ -2,67 +2,29 @@ const connexion = document.querySelector("#connexion");
 const login = document.querySelector("#login");
 const pass = document.querySelector("#pass");
 
+function verify(element, event) {
 
-connexion.addEventListener("click", () => {
-    // console.log(login.value);
-    // console.log(pass.value);
+    element.addEventListener(event, (e) => {
 
-    let data = new FormData();
-    data.append("login", login.value);
-    data.append("pass", pass.value);
-
-    fetch("/wetransfer_like/admin/verifForm", {method: "POST", body: data})
-    .then( (result) => { return result.json() } )
-    .then( (result) => {
-        // console.log(result.error);
-        if(!result.error){
-            window.location.replace("/wetransfer_like/dashboard");
-        } else {
-            document.querySelector("#error").innerHTML = result.error;
+        if (e.key === "Enter" || event === "click") {
+            let data = new FormData();
+            data.append("login", login.value);
+            data.append("pass", pass.value);
+        
+            fetch("/wetransfer_like/admin/verifForm", {method: "POST", body: data})
+            .then( (result) => { return result.json() } )
+            .then( (result) => {
+                // console.log(result.error);
+                if(!result.error){
+                    window.location.replace("/wetransfer_like/dashboard");
+                } else {
+                    document.querySelector("#error").innerHTML = result.error;
+                }
+            });
         }
-    });
-})
+    })
+}
 
-login.addEventListener("keydown", () => {
-
-    if (event.key === "Enter") {
-
-        let data = new FormData();
-        data.append("login", login.value);
-        data.append("pass", pass.value);
-
-        fetch("/wetransfer_like/admin/verifForm", {method: "POST", body: data})
-        .then( (result) => { return result.json() } )
-        .then( (result) => {
-            // console.log(result.error);
-            if(!result.error){
-                window.location.replace("/wetransfer_like/dashboard");
-            } else {
-                document.querySelector("#error").innerHTML = result.error;
-            }
-        });
-
-    }
-})
-
-pass.addEventListener("keydown", () => {
-
-    if (event.key === "Enter") {
-
-        let data = new FormData();
-        data.append("login", login.value);
-        data.append("pass", pass.value);
-
-        fetch("/wetransfer_like/admin/verifForm", {method: "POST", body: data})
-        .then( (result) => { return result.json() } )
-        .then( (result) => {
-            // console.log(result.error);
-            if(!result.error){
-                window.location.replace("/wetransfer_like/dashboard");
-            } else {
-                document.querySelector("#error").innerHTML = result.error;
-            }
-        });
-
-    }
-})
+verify(connexion, "click");
+verify(login, "keydown");
+verify(pass, "keydown");
