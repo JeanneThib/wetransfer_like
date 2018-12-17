@@ -83,13 +83,16 @@ $resultat = move_uploaded_file($_FILES['fichier']['tmp_name'],$_SERVER["DOCUMENT
     $resultat = move_uploaded_file($_FILES['fichier']['tmp_name'],$_SERVER["DOCUMENT_ROOT"]."/".'wetransfer_like/cloud/' .$full.'.'.$ext);
 }
 
-var_dump($_FILES);
+// var_dump($_FILES);
 
 // Si $resultat = true
 if ($resultat){
     echo "Transfert réussi </br>";
-    $url = 'cloud/' .$nom.'.'.$ext;
+    $url = 'cloud/' .$full .'.'. $ext;
+    $dlLink = 'wetransfer_like/download/show/' . $full;
 };
+
+echo $dlLink;
 
 // ===== ENVOI BDD =====
 insertDB($name, $url, $date, $fileSize, $ext);

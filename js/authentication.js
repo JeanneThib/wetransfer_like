@@ -22,3 +22,47 @@ connexion.addEventListener("click", () => {
         }
     });
 })
+
+login.addEventListener("keydown", () => {
+
+    if (event.key === "Enter") {
+
+        let data = new FormData();
+        data.append("login", login.value);
+        data.append("pass", pass.value);
+
+        fetch("/wetransfer_like/admin/verifForm", {method: "POST", body: data})
+        .then( (result) => { return result.json() } )
+        .then( (result) => {
+            // console.log(result.error);
+            if(!result.error){
+                window.location.replace("/wetransfer_like/dashboard");
+            } else {
+                document.querySelector("#error").innerHTML = result.error;
+            }
+        });
+
+    }
+})
+
+pass.addEventListener("keydown", () => {
+
+    if (event.key === "Enter") {
+
+        let data = new FormData();
+        data.append("login", login.value);
+        data.append("pass", pass.value);
+
+        fetch("/wetransfer_like/admin/verifForm", {method: "POST", body: data})
+        .then( (result) => { return result.json() } )
+        .then( (result) => {
+            // console.log(result.error);
+            if(!result.error){
+                window.location.replace("/wetransfer_like/dashboard");
+            } else {
+                document.querySelector("#error").innerHTML = result.error;
+            }
+        });
+
+    }
+})
