@@ -12,7 +12,7 @@ $erreur = "";
 // echo '</br>' . $ms;
 
 echo $_SERVER["REQUEST_URI"];
-$_FILES['fichier']['name'];     //Le nom original du fichier, comme sur le disque du visiteur (exemple : mon_icone.png).
+$_FILES['fichier']['name'];     //Le idnom original du fichier, comme sur le disque du visiteur (exemple : mon_icone.png).
 $_FILES['fichier']['type'];     //Le type du fichier. Par exemple, cela peut être « image/png ».
 $_FILES['fichier']['size'];     //La taille du fichier en octets.
 $_FILES['fichier']['tmp_name']; //L'adresse vers le fichier uploadé dans le répertoire temporaire.
@@ -29,13 +29,13 @@ if ($_FILES['fichier']['size'] == 0 || $_FILES['fichier']['size'] > $_POST['MAX_
 $week = strtotime ($date);
 echo '</br>Semaine : '.date('W',$week);
 
-// Nom complet du fichier
+// idNom complet du fichier
 $fullName = $_FILES['fichier']['name'];
 
 // Extension du fichier
 $ext = strtolower(  substr(  strrchr($_FILES['fichier']['name'], '.')  ,1)  );
 
-// Nom du fichier sans l'extension
+// idNom du fichier sans l'extension
 $name = substr($_FILES['fichier']['name'], 0, -strlen($ext)-1 );
 
 // Taille du fichier
@@ -46,8 +46,8 @@ $maxSize = 2048576;
 
 
     echo '</br>';
-    echo '<b>Nom brut : </b>'.$fullName.'</br>';
-    echo '<b>Nom sans extension : </b>'.$name.'</br>';
+    echo '<b>idNom brut : </b>'.$fullName.'</br>';
+    echo '<b>idNom sans extension : </b>'.$name.'</br>';
     echo '<b>Extension : </b>'.$ext.'</br>';
     echo '<b>Taille en Octets : </b>'.$fileSize.'</br>';
     echo '</br>';
@@ -66,8 +66,8 @@ $maxSize = 2048576;
     
     // Créer un identifiant difficile à deviner
 $ms = round(microtime(true) * 1000);
-$nom = sha1(uniqid(rand(), true));
-$full = $ms . '-' . $nom;
+$id = sha1(uniqid(rand(), true));
+$full = $ms . '-' . $id;
 
 // echo '</br>' . $full . '</br>';
 
@@ -90,12 +90,10 @@ $resultat = move_uploaded_file($_FILES['fichier']['tmp_name'],$_SERVER["DOCUMENT
     $resultat = move_uploaded_file($_FILES['fichier']['tmp_name'],$_SERVER["DOCUMENT_ROOT"]."/".'wetransfer_like/cloud/' .$full.'.'.$ext);
 }
 
-var_dump($_FILES);
-
 // Si $resultat = true
 if ($resultat){
     echo "Transfert réussi </br>";
-    $dlLink = 'wetransfer_like/download/show/' . $full;
+    $dlLink = 'https://antoninl.promo-23.codeur.online/wetransfer_like/download/show/' . $full;
     echo $id;
 };
 
