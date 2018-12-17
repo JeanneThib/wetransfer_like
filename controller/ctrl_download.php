@@ -27,10 +27,11 @@ function showDownload() {
 }
 
 
-if(isset($_REQUEST["file"])){
+// if(isset($_REQUEST["file"])){
     // Récupération des paramètres du fichier
-    $file = $_REQUEST["file"];
-    $filepath = "cloud/" . $file;
+    // $file = $_REQUEST["file"];
+    // $filepath = "cloud/" . $file;
+    $filepath = "/wetransfer_like/cloud/1544715491906-b5b6a36c1a194b490e832f207080c3515468fd1a.jpg";
     
     // Code pour téléchargement
     if(file_exists($filepath)) {
@@ -45,7 +46,7 @@ if(isset($_REQUEST["file"])){
         readfile($filepath);
         exit;
     }
-}
+// }
 
 // function myFunction() {
 //     global $twig;
