@@ -93,7 +93,7 @@ $resultat = move_uploaded_file($_FILES['fichier']['tmp_name'],$_SERVER["DOCUMENT
 // Si $resultat = true
 if ($resultat){
     echo "Transfert réussi </br>";
-    $dlLink = 'https://antoninl.promo-23.codeur.online/wetransfer_like/download/show/' . $full;
+    $dlLink = 'https://jeannet.promo-23.codeur.online/wetransfer_like/download/show/' . $full;
     echo $id;
 };
 
