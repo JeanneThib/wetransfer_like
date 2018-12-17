@@ -18,7 +18,7 @@ body {
   font-size: 12px;
   line-height: 30px;
   color: #777;
-  background: #4CAF50;
+  background-image: url(../media/sapin.jpg);
 }
 
 .container {
@@ -66,6 +66,11 @@ fieldset {
   width: 100%;
 }
 
+.bouton {
+  width: 50px;
+  background-image: url(../media/plus.png);
+}
+
 #contact input[type=text],
 #contact input[type=email],
 #contact input[type=tel],
@@ -99,7 +104,7 @@ fieldset {
   cursor: pointer;
   width: 100%;
   border: none;
-  background: #4CAF50;
+  background: #c01013;
   color: #FFF;
   margin: 0 0 5px;
   padding: 10px;
@@ -107,7 +112,7 @@ fieldset {
 }
 
 #contact button[type=submit]:hover {
-  background: #43A047;
+  background: #2b530a;
   -webkit-transition: background 0.3s ease-in-out;
   -moz-transition: background 0.3s ease-in-out;
   transition: background-color 0.3s ease-in-out;
