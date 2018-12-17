@@ -23,15 +23,9 @@ function show404() {
 
 function showDownload() {
     global $twig;
-    echo $twig->render('view_download.twig');
-}
-
-
-// if(isset($_REQUEST["file"])){
-    // Récupération des paramètres du fichier
-    // $file = $_REQUEST["file"];
-    // $filepath = "cloud/" . $file;
-    $filepath = "/wetransfer_like/cloud/1544715491906-b5b6a36c1a194b490e832f207080c3515468fd1a.jpg";
+    global $base_url;
+    $filepath = $base_url.'cloud/'.substr(  strrchr($_SERVER['REQUEST_URI'], '/')  ,1);
+    echo $filepath;
     
     // Code pour téléchargement
     if(file_exists($filepath)) {
@@ -46,6 +40,9 @@ function showDownload() {
         readfile($filepath);
         exit;
     }
+    echo $twig->render('view_download.twig');
+}
+
 // }
 
 // function myFunction() {
