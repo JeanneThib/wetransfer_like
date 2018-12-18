@@ -55,3 +55,5 @@ new Chart(document.getElementById("line-chart"), {
       }
     }
   });
+
+  // SELECT COUNT(link_id) AS nbr FROM file_upload
