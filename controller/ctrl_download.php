@@ -22,26 +22,45 @@ function show404() {
 }
 
 function showDownload() {
-    global $twig;
-    $test =  substr(  strrchr($_SERVER['REQUEST_URI'], '/')  ,1);
-$file = getFile($test);
-var_dump ($file);
+    if((substr(  strrchr($_SERVER['REQUEST_URI'], '/')  ,1)) == 'show'){
+        echo $twig->render('view_download.twig');
+}else {
 
-if(isset($_POST['bouton'])){
-    // // Code pour téléchargement
-        header('Content-Description: File Transfer');
-        header('Content-Type: application/octet-stream');
-        header('Content-Disposition: attachment; filename="'.basename($file['link_id'].'.'.$file['extension']).'"');
-        header('Expires: 0');
-        header('Cache-Control: must-revalidate');
-        header('Pragma: public');
-        header('Content-Length: '.filesize($filepath));
-        flush(); // Flush system output buffer
-        readfile($filepath);
+
+
+    global $twig;
+    
+    $file = getFile (substr(  strrchr($_SERVER['REQUEST_URI'], '/')  ,1));
+    var_dump($file);
+    
+    foreach ($file as $key) {
+        $nom = $key['name'];
+        $extension = $key['extension'];
+        $link_id = $key['link_id'];
+            var_dump($key['link_id']);
     }
-    echo $twig->render('view_download.twig');
+    echo $link_id.'.'.$extension;
+    $filepath = $_SERVER['DOCUMENT_ROOT'].'/wetransfer_like/cloud/'.$link_id.'.'.$extension;
+    echo $twig->render('view_download.twig', array('chemin' => $link_id));
+
+    if(isset($_POST['bouton'])){
+
+                // // Code pour téléchargement
+                header('Content-Description: File Transfer');
+                header('Content-Type: application/octet-stream');
+                header('Content-Disposition: attachment; filename="'.basename($filepath).'"');
+                header('Expires: 0');
+                header('Cache-Control: must-revalidate');
+                header('Pragma: public');
+                header('Content-Length: '.filesize($filepath));
+                ob_clean();
+                flush(); // Flush system output buffer
+                readfile($filepath);
+                echo $twig->render('view_download.twig', array('chemin' => $link_id));
+                exit();
+    }
 }
-// }
+}
 
 // function myFunction() {
 //     global $twig;
