@@ -177,9 +177,23 @@ h7{
 
     &:hover{
         background-color: #c01013;
+        box-shadow: 0px 1px 3px #c01013;
+    }
+
+    &:focus{
+      background-color: #2b530a;
+      background: #2b530a;
     }
 }
+.login input:focus {
+  outline: none;
+  color: #444;
+  border-color: #2b530a;
+  border-left-width: 35px;}
 
+.wrapper{
+  background: none;
+}
 // DOWNLOAD
 
 .download{
