@@ -2,30 +2,25 @@
   <mj-body>
     <mj-raw>
        </mj-raw>
-    <mj-section background-color="#318ce7" >
-      <mj-column width="600px">
-       </mj-column>
-    </mj-section>
+    <mj-section >
+   <mj-column width="600px">
+    </mj-column>
+        </mj-section>
     <mj-raw>
       <!-- Company Header -->
     </mj-raw>
     <mj-section background-color="#fafafa">
+       <mj-image src="http://www.fb.iaka.net/IMG/jpg/joyeux_noel_0003_banniere.jpg" alt="joyeux noel"></mj-image>
       <mj-column>
         <mj-text align="center" font-style="italic"   font-size="20px" color="#626262">We transfer vous informes</mj-text>
+        </mj-column>
     </mj-section>
-    <mj-raw>
-      <!-- Image Header -->
-   
-      <!-- Intro text -->
-      
-      
-    </mj-raw>
     <mj-section background-color="#fafafa">
       <mj-column width="400px">
         <mj-text font-style="italic" font-size="22px" font-family="Helvetica Neue" color="#626262">Bonjour,</mj-text>
         <mj-text font-size="16px"color="#525252">Veuillez trouver ci joint le lien pour télécharger vos fichiers ou copier/coller le lien dans votre navigateur internet </mj-text>
-        <mj-button background-color="#318ce7"href="#">Lien de téléchargement</mj-button>
-        <mj-text font-size="12px" align="center">https://www.sois-net.fr/mjml-framework-emails-responsive/</mj-text>
+        <mj-button background-color="#c01013" href="{{ url }}">Lien de téléchargement</mj-button>
+        <mj-text font-size="12px" align="center">{{url}}</mj-text>
       </mj-column>
     </mj-section>
     <mj-raw>
@@ -36,13 +31,9 @@
     <mj-section background-color="#fafafa">
       <mj-column width="400px">
         <mj-text  font-size="13px" font-family="Helvetica Neue" color="#626262">Nous vous remercions pour votre confiance </mj-text>
-        
         <mj-text font-size="12px" color="#525252" font-family="Helvetica Neue">Et ne vous inquiétez pas aucun de vos fichiers ou de vos données ne seront transférés à d'autre personnes , nous mettons tout en oeuvre pour vous protéger et sécurisé vos données
         </mj-text>
-       
-      </mj-column>
+       </mj-column>
     </mj-section>
-    
-   
-  </mj-body>
+    </mj-body>
 </mjml>

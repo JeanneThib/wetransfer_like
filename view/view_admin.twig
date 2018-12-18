@@ -1,10 +1,12 @@
 {# {% extends 'view_main.twig' %} #}
 
 {% block authentication %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+<link href="css/style.css" rel="stylesheet">
 
     <base href="{{base_url}}">
 
-    <div>
+    {# <div>
 
             <label for="login">Login</label>
             <input id="login" name="login" type="text" autocomplete="off">
@@ -16,7 +18,22 @@
 
             <p id="error"></p>
 
-    </div> 
+    </div>  #}
+
+    <div class="wrapper">
+    <form class="login">
+        <p class="title">Log in</p>
+        <input id="login" type="text" placeholder="Username" autofocus/>
+        <i class="fa fa-user"></i>
+        <input id="pass" type="password" placeholder="Password" />
+        <i class="fa fa-key"></i>
+        <button id="connexion">
+        <i class="spinner"></i>
+        <span class="state">Log in</span>
+        </button>
+    </form>
+    </p>
+    </div>
 
     <script src="js/authentication.js"></script>
 
