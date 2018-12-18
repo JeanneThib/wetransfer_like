@@ -29,6 +29,7 @@ function showDownload() {
 
 
     global $twig;
+<<<<<<< HEAD
     
     $file = getFile (substr(  strrchr($_SERVER['REQUEST_URI'], '/')  ,1));
     var_dump($file);
@@ -38,6 +39,23 @@ function showDownload() {
         $extension = $key['extension'];
         $link_id = $key['link_id'];
             var_dump($key['link_id']);
+=======
+    $test =  substr(  strrchr($_SERVER['REQUEST_URI'], '/')  ,1);
+$file = getFile($test);
+// var_dump ($file);
+
+if(isset($_POST['bouton'])){
+    // // Code pour téléchargement
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename="'.basename($file['link_id'].'.'.$file['extension']).'"');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: '.filesize($filepath));
+        flush(); // Flush system output buffer
+        readfile($filepath);
+>>>>>>> origin/jeanne
     }
     echo $link_id.'.'.$extension;
     $filepath = $_SERVER['DOCUMENT_ROOT'].'/wetransfer_like/cloud/'.$link_id.'.'.$extension;
