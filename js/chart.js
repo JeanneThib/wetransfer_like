@@ -57,3 +57,8 @@ new Chart(document.getElementById("line-chart"), {
   });
 
   // SELECT COUNT(link_id) AS nbr FROM file_upload
+  // SELECT COUNT(link_id) AS nbr FROM file_upload GROUP BY upload_date
+  // SELECT name, DAY(upload_date) FROM file_upload WHERE WEEK(upload_date) = 50
+  // SELECT DAYOFWEEK('2018-12-15') FROM file_upload
+  // SELECT name, DAYOFWEEK(upload_date) AS day FROM file_upload WHERE WEEK(upload_date) = 50
+  // SELECT name, DAYOFWEEK(upload_date) AS day, COUNT(DAYOFWEEK(upload_date)) FROM file_upload WHERE WEEK(upload_date) = 50 GROUP BY DAYOFWEEK(upload_date)
