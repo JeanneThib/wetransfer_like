@@ -67,7 +67,6 @@
   <style type="text/css">
     @import url(https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700);
   </style>
-  <!--<![endif]-->
   <style type="text/css">
     @media only screen and (min-width:480px) {
       .mj-column-px-600 {
@@ -75,9 +74,9 @@
         max-width: 600px;
       }
 
-      .mj-column-per-100 {
-        width: 100% !important;
-        max-width: 100%;
+      .mj-column-per-50 {
+        width: 50% !important;
+        max-width: 50%;
       }
 
       .mj-column-px-400 {
@@ -87,13 +86,22 @@
     }
   </style>
   <style type="text/css">
+    @media only screen and (max-width:480px) {
+      table.full-width-mobile {
+        width: 100% !important;
+      }
+
+      td.full-width-mobile {
+        width: auto !important;
+      }
+    }
   </style>
 </head>
 
 <body>
   <div style="">
-    <div style="background:#318ce7;background-color:#318ce7;Margin:0px auto;max-width:600px;">
-      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#318ce7;background-color:#318ce7;width:100%;">
+    <div style="Margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
         <tbody>
           <tr>
             <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;vertical-align:top;">
@@ -111,7 +119,16 @@
         <tbody>
           <tr>
             <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;vertical-align:top;">
-              <div class="mj-column-per-100 outlook-group-fix" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                <tbody>
+                  <tr>
+                    <td style="width:550px;">
+                      <img height="auto" width="600px" src="http://www.fb.iaka.net/IMG/jpg/joyeux_noel_0003_banniere.jpg" style="border:0;display:block;outline:none;text-decoration:none;height:auto;" width="550" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="mj-column-per-50 outlook-group-fix" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tr>
                     <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
@@ -146,8 +163,8 @@
                     <td align="center" vertical-align="middle" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                       <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;line-height:100%;">
                         <tr>
-                          <td align="center" bgcolor="#318ce7" role="presentation" style="border:none;border-radius:3px;cursor:auto;padding:10px 25px;background:#318ce7;" valign="middle">
-                            <a href="{{ url }}" style="background:#318ce7;color:#ffffff;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;font-weight:normal;line-height:120%;Margin:0;text-decoration:none;text-transform:none;" target="_blank"> Lien de téléchargement </a>
+                          <td align="center" bgcolor="#c01013" role="presentation" style="border:none;border-radius:3px;cursor:auto;padding:10px 25px;background:#c01013;" valign="middle">
+                            <a href="{{ url }}" style="background:#c01013;color:#ffffff;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;font-weight:normal;line-height:120%;Margin:0;text-decoration:none;text-transform:none;" target="_blank"> Lien de téléchargement </a>
                           </td>
                         </tr>
                       </table>
@@ -193,4 +210,3 @@
 </body>
 
 </html>
-

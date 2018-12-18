@@ -9,17 +9,17 @@ $twig = new Twig_Environment($loader);
 $erreur = "";
 
 
-switch ($action) {
-    case 'value':
-        verifUpload();
-        break;
-    case 'value':
-        showError();
-        break;
-    default:
-        showUpload();
-        break;
-}
+// switch ($action) {
+//     case 'value':
+//         verifUpload();
+//         break;
+//     case 'value':
+//         showError();
+//         break;
+//     default:
+//         showUpload();
+//         break;
+// }
 
 echo $_SERVER["REQUEST_URI"];
 $_FILES['fichier']['name'];     //Le idnom original du fichier, comme sur le disque du visiteur (exemple : mon_icone.png).

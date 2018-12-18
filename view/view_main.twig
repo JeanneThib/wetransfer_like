@@ -14,22 +14,11 @@
 <body class="img-fluid">
 <div class="container">  
   <form id="contact" action="controller/ctrl_upload.php" method="post" enctype="multipart/form-data" >
-    <h3>Colorlib Contact Form</h3>
+    <h3>Transférer vos fichiers</h3>
     <fieldset>
-    <label for="fichier">Fichier (tous formats | max. 2 Mo) :</label><br />
-    {# <input type="file" name="fichier" id="fichier"/><br /> #}
-    <div class="container">
-    <div class="row">
-    <div class="col"> 
-    <input class="bouton" type="file" name="fichier" id="fichier"/><br /> 
-    <img class="bouton img-fluid" src="media/plus.png">
-    </div>
-    <div class="col">
-    <p>Ajout des fichiers</p>
+    <label class="custom-file-upload" for="fichier"><br /><img src="media/plus.png"></label><h7>&nbsp;&nbsp;Ajouter des fichiers</h7>
+    <input type="file" name="fichier" id="fichier"/><br /> 
     <input type="hidden" name="MAX_FILE_SIZE" value="2097152"> 
-    </div>
-    </div>
-    </div>
     </fieldset>
     <fieldset>
       <input type="text" name="destinataire" placeholder="Email destinataire"></input>

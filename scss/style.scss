@@ -67,10 +67,7 @@ fieldset {
   padding: 0;
   width: 100%;
 }
-.bouton{
-  width: 50px;
-  background-image: url(../media/plus.png);
-}
+
 
 #contact input[type="text"],
 #contact input[type="email"],
@@ -148,3 +145,16 @@ fieldset {
 :-ms-input-placeholder {
   color: #888;
 }
+
+ #contact input[type="file"] {
+  display: none;
+}
+
+h7{
+  font-size: large;
+}
+
+.custom-file-upload{
+  cursor: pointer;
+}
+
