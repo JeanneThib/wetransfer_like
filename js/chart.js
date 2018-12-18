@@ -25,7 +25,7 @@ new Chart(document.getElementById("pie-chart"), {
       labels: ["png", "jpg", "pdf", "xlsx", "docx", "zip", "Autres"],
       datasets: [{
         label: "Extensions fichiers",
-        backgroundColor: ["#3e95cd", "#8e5ea2","#248f24","#ff9933","#ff4d4d","#999999","#e6e600" ],
+        backgroundColor: ["#3e95cd", "#8e5ea2","#248f24","#ff9933","#ff4d4d","#e6e600","#999999" ],
         data: [15,5,5,10,25,10,30]
       }]
     },
