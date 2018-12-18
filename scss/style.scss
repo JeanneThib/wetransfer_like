@@ -200,3 +200,31 @@ h7{
     background-image: url(../media/download.jpg);
 }
 
+.bienvenue{
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-primary{
+background-color: #2b530a;
+border-color: #2b530a;
+&:hover{
+  background-color: #c01013;
+  border-color: #c01013;
+}
+&::active{
+  background-color: #c01013;
+  border-color: #c01013;
+}
+&:focus{
+  box-shadow: 0 0 0 0.2 #2b530a;
+}
+
+}
+.telecharge{
+  display: flex;
+  justify-content: center;
+  margin-top: 81px;
+}
+
