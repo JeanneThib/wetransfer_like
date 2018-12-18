@@ -1,9 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
-#charts {
-  width: 60%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+#week {
+  width: 200px;
 }
 
 * {
@@ -28,7 +25,7 @@
   background-image: url(../media/sapin.jpg);
 }
 
-.container {
+#main .container {
   max-width: 400px;
   width: 100%;
   margin: 0 auto;
