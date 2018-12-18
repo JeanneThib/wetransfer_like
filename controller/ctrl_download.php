@@ -25,7 +25,7 @@ function showDownload() {
     global $twig;
     $test =  substr(  strrchr($_SERVER['REQUEST_URI'], '/')  ,1);
 $file = getFile($test);
-var_dump ($file);
+// var_dump ($file);
 
 if(isset($_POST['bouton'])){
     // // Code pour téléchargement
