@@ -1,7 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
-<<<<<<< HEAD
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
 #week {
   width: 200px;
+}
+
+.download {
+  background-image: url(../media/download.jpg);
 }
 
 body {
@@ -161,19 +165,6 @@ footer {
 footer a, footer a:link {
   color: #fff;
   text-decoration: none;
-=======
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
-#charts {
-  width: 60%;
-}
-
-#main-container {
-  display: flex;
-  justify-content: center;
-}
-
-.download {
-  background-image: url(../media/download.jpg);
 }
 
 .admin {
@@ -185,7 +176,6 @@ footer a, footer a:link {
 }
 #connexion:hover {
   background-color: #c01013;
->>>>>>> origin/jeanne
 }
 
 * {
@@ -337,8 +327,6 @@ fieldset {
   color: #888;
 }
 
-<<<<<<< HEAD
-=======
 #contact input[type=file] {
   display: none;
 }
@@ -521,11 +509,26 @@ h7 {
 }
 #connexion:hover {
   background-color: #c01013;
+  box-shadow: 0px 1px 3px #c01013;
+}
+#connexion:focus {
+  background-color: #2b530a;
+  background: #2b530a;
+}
+
+.login input:focus {
+  outline: none;
+  color: #444;
+  border-color: #2b530a;
+  border-left-width: 35px;
+}
+
+.wrapper {
+  background: none;
 }
 
 .download {
   background-image: url(../media/download.jpg);
 }
 
->>>>>>> origin/jeanne
 /*# sourceMappingURL=style.css.map */
