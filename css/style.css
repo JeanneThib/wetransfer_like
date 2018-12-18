@@ -8,6 +8,34 @@
   background-image: url(../media/download.jpg);
 }
 
+.bienvenue {
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-primary {
+  background-color: #2b530a;
+  border-color: #2b530a;
+}
+.btn-primary:hover {
+  background-color: #c01013;
+  border-color: #c01013;
+}
+.btn-primary::active {
+  background-color: #c01013;
+  border-color: #c01013;
+}
+.btn-primary:focus {
+  box-shadow: 0 0 0 0.2 #2b530a;
+}
+
+.telecharge {
+  display: flex;
+  justify-content: center;
+  margin-top: 81px;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   height: 100vh;
@@ -175,6 +203,22 @@ footer a, footer a:link {
 }
 #connexion:hover {
   background-color: #c01013;
+  box-shadow: 0px 1px 3px #c01013;
+}
+#connexion:focus {
+  background-color: #2b530a;
+  background: #2b530a;
+}
+
+.login input:focus {
+  outline: none;
+  color: #444;
+  border-color: #2b530a;
+  border-left-width: 35px;
+}
+
+.wrapper {
+  background: none;
 }
 
 * {
@@ -528,6 +572,34 @@ h7 {
 
 .download {
   background-image: url(../media/download.jpg);
+}
+
+.bienvenue {
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-primary {
+  background-color: #2b530a;
+  border-color: #2b530a;
+}
+.btn-primary:hover {
+  background-color: #c01013;
+  border-color: #c01013;
+}
+.btn-primary::active {
+  background-color: #c01013;
+  border-color: #c01013;
+}
+.btn-primary:focus {
+  box-shadow: 0 0 0 0.2 #2b530a;
+}
+
+.telecharge {
+  display: flex;
+  justify-content: center;
+  margin-top: 81px;
 }
 
 /*# sourceMappingURL=style.css.map */
