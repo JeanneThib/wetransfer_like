@@ -23,7 +23,7 @@
   
 }
 
-.container {
+#main .container {
   max-width: 400px;
   width: 100%;
   margin: 0 auto;
@@ -147,4 +147,16 @@ fieldset {
 
 :-ms-input-placeholder {
   color: #888;
+}
+
+ #contact input[type="file"] {
+  display: none;
+}
+
+h7{
+  font-size: large;
+}
+
+.custom-file-upload{
+  cursor: pointer;
 }

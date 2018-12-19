@@ -30,7 +30,7 @@ if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > 
 }
 $_SESSION['last_activity'] = time(); // update last activity time stamp
 
-session_regenerate_id(true);
+// session_regenerate_id(true);
 
 // if($_SESSION["authenticated"]) {
 //     echo "Vous êtes connecté";

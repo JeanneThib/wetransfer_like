@@ -1,8 +1,10 @@
-@import 'dashboard.scss';
-@import 'download.scss';
-@import 'login.scss';
-@import 'reussite.scss';
-@import 'upload.scss';
+@import '_dashboard.scss';
+@import '_download.scss';
+@import '_login.scss';
+@import '_reussite.scss';
+@import '_upload.scss';
+
+// PAGE UPLOAD
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
 * {
   margin: 0;
@@ -17,7 +19,7 @@
   text-rendering: optimizeLegibility;
 }
 
-body {
+#main {
   
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-weight: 100;
@@ -72,7 +74,10 @@ fieldset {
   padding: 0;
   width: 100%;
 }
-
+.bouton{
+  width: 50px;
+  background-image: url(../media/plus.png);
+}
 
 #contact input[type="text"],
 #contact input[type="email"],
@@ -161,5 +166,65 @@ h7{
 
 .custom-file-upload{
   cursor: pointer;
+}
+// PAGE ADMIN
+.admin{
+    background-image: url(../media/christmas.jpg);
+}
+
+#connexion{
+    background-color: #2b530a;
+
+    &:hover{
+        background-color: #c01013;
+        box-shadow: 0px 1px 3px #c01013;
+    }
+
+    &:focus{
+      background-color: #2b530a;
+      background: #2b530a;
+    }
+}
+.login input:focus {
+  outline: none;
+  color: #444;
+  border-color: #2b530a;
+  border-left-width: 35px;}
+
+.wrapper{
+  background: none;
+}
+// DOWNLOAD
+
+.download{
+    background-image: url(../media/download.jpg);
+}
+
+.bienvenue{
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-primary{
+background-color: #2b530a;
+border-color: #2b530a;
+&:hover{
+  background-color: #c01013;
+  border-color: #c01013;
+}
+&::active{
+  background-color: #c01013;
+  border-color: #c01013;
+}
+&:focus{
+  box-shadow: 0 0 0 0.2 #2b530a;
+}
+
+}
+.telecharge{
+  display: flex;
+  justify-content: center;
+  margin-top: 81px;
 }
 
