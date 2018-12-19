@@ -41,14 +41,15 @@
 //     console.log("Tu as cliqué sur la semaine " + val);
 // }
 let sel = document.querySelector('#week');
-var dayArr = [0,0,0,0,0,0,0];
 
 document.addEventListener('DOMContentLoaded',function() {
     sel.onchange=changeWeek;
 },false);
 
+var dayArr = [0,0,0,0,0,0,0];
 function changeWeek() {
     console.log(sel.value);
+
 
 
     let data = new FormData();
@@ -59,14 +60,42 @@ function changeWeek() {
     .then( (result) => {
         // console.log(result);
         // console.log(result[1]["day"]);
-        dayArr[0] = result[0]["nbr"];
+        for (let i = 0; i < 7; i++) {
+            if(result[i]["nbr"]) {
+                dayArr[i] = result[i]["nbr"];
+            }
+        }
+        
         console.log(dayArr[0]);
     });
-
-
+    
+    
+    
+    
 }
 
 
+
+// new Chart(document.getElementById("bar-chart"), {
+//     type: 'bar',
+//     data: {
+//       labels: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"],
+//       datasets: [
+//         {
+//           label: "Fichiers envoyés",
+//           backgroundColor: ["#3e95cd", "#8e5ea2","#248f24","#ff9933","#ff4d4d","#999999","#e6e600" ],
+//           data: dayArr
+//         }
+//       ]
+//     },
+//     options: {
+//       legend: { display: false },
+//       title: {
+//         display: true,
+//         text: 'Nombre de fichiers envoyés semaine'
+//       }
+//     }
+// });
 
 new Chart(document.getElementById("bar-chart"), {
     type: 'bar',
@@ -89,6 +118,7 @@ new Chart(document.getElementById("bar-chart"), {
     }
 });
 
+
 new Chart(document.getElementById("pie-chart"), {
     type: 'pie',
     data: {
@@ -96,7 +126,7 @@ new Chart(document.getElementById("pie-chart"), {
       datasets: [{
         label: "Extensions fichiers",
         backgroundColor: ["#3e95cd", "#8e5ea2","#248f24","#ff9933","#ff4d4d","#e6e600","#999999" ],
-        data: [15,5,5,10,25,10,30]
+        data: dayArr
       }]
     },
     options: {
@@ -125,6 +155,14 @@ new Chart(document.getElementById("line-chart"), {
       }
     }
   });
+
+
+
+
+//   function addData(data) {
+//     dataset.data.push(data);
+//     chart.update();
+// }
 
   // SELECT COUNT(link_id) AS nbr FROM file_upload
   // SELECT COUNT(link_id) AS nbr FROM file_upload GROUP BY upload_date
