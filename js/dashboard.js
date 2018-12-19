@@ -41,35 +41,83 @@
 //     console.log("Tu as cliqué sur la semaine " + val);
 // }
 let sel = document.querySelector('#week');
+var bar_chart = new Chart(document.getElementById("bar-chart"));
 
 document.addEventListener('DOMContentLoaded',function() {
     sel.onchange=changeWeek;
 },false);
 
+new Chart(document.getElementById("bar-chart"), {
+    type: 'bar',
+    data: {
+      labels: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"],
+      datasets: [
+        {
+          label: "Fichiers envoyés",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#248f24","#ff9933","#ff4d4d","#999999","#e6e600" ],
+          data: [0,0,0,0,0,0,0]
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Nombre de fichiers envoyés semaine'
+      }
+    }
+});
 var dayArr = [0,0,0,0,0,0,0];
+
 function changeWeek() {
-    console.log(sel.value);
-
-
-
+    
+    
     let data = new FormData();
     data.append("week", sel.value);
-
+    
     fetch("/wetransfer_like/dashboard/week", {method: "POST", body: data})
     .then( (result) => { return result.json() } )
     .then( (result) => {
-        // console.log(result);
-        // console.log(result[1]["day"]);
-        for (let i = 0; i < 7; i++) {
-            if(result[i]["nbr"]) {
-                dayArr[i] = result[i]["nbr"];
+        bar_chart.destroy();
+        dayArr = [0,0,0,0,0,0,0];
+        for (let i = 0; i < result.length; i++) {
+            jour = parseInt(result[i]["day"]);
+            if(jour === 1) {
+                dayArr[6] = result[i]["nbr"];   
+            } else {
+                dayArr[(jour - 2)] = result[i]["nbr"];
             }
+            // console.log(jour);
+            // console.log(dayArr);
         }
-        
-        console.log(dayArr[0]);
+        console.log(dayArr);
+
+
+    bar_chart = new Chart(document.getElementById("bar-chart"), {
+        type: 'bar',
+        data: {
+          labels: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"],
+          datasets: [
+            {
+              label: "Fichiers envoyés",
+              backgroundColor: ["#3e95cd", "#8e5ea2","#248f24","#ff9933","#ff4d4d","#999999","#e6e600" ],
+              data: dayArr
+            }
+          ]
+        },
+        options: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'Nombre de fichiers envoyés semaine'
+          }
+        }
     });
+        
+    });
+
     
-    
+
     
     
 }
@@ -97,27 +145,6 @@ function changeWeek() {
 //     }
 // });
 
-new Chart(document.getElementById("bar-chart"), {
-    type: 'bar',
-    data: {
-      labels: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"],
-      datasets: [
-        {
-          label: "Fichiers envoyés",
-          backgroundColor: ["#3e95cd", "#8e5ea2","#248f24","#ff9933","#ff4d4d","#999999","#e6e600" ],
-          data: dayArr
-        }
-      ]
-    },
-    options: {
-      legend: { display: false },
-      title: {
-        display: true,
-        text: 'Nombre de fichiers envoyés semaine'
-      }
-    }
-});
-
 
 new Chart(document.getElementById("pie-chart"), {
     type: 'pie',
@@ -126,7 +153,7 @@ new Chart(document.getElementById("pie-chart"), {
       datasets: [{
         label: "Extensions fichiers",
         backgroundColor: ["#3e95cd", "#8e5ea2","#248f24","#ff9933","#ff4d4d","#e6e600","#999999" ],
-        data: dayArr
+        data: [5,15,20,30,5,10,15]
       }]
     },
     options: {
