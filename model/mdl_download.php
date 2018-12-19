@@ -2,7 +2,7 @@
 
 require_once 'connect.php';
 
-function getFile($url){
+function getFileDB($url){
 
     global $bdd;
     $sql = "SELECT name, extension, size, link_id FROM file_upload WHERE link_id = :url" ;
