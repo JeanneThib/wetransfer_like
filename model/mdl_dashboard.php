@@ -7,7 +7,7 @@ require_once "model/connect.php";
         global $bdd;
         
         $sql = "SELECT DAYOFWEEK(upload_date) AS day, COUNT(DAYOFWEEK(upload_date)) AS nbr 
-        FROM file_upload WHERE (WEEK(upload_date) = :week AND DAYOFWEEK(upload_date) != 1 ) OR (WEEK(upload_date) = :week + 1 AND DAYOFWEEK(upload_date) = 1)
+        FROM file_upload WHERE (WEEK(upload_date) = :week - 1 AND DAYOFWEEK(upload_date) != 1 ) OR (WEEK(upload_date) = :week AND DAYOFWEEK(upload_date) = 1)
         GROUP BY DAYOFWEEK(upload_date)";
         
         $response = $bdd->prepare( $sql );
