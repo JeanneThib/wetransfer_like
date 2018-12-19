@@ -18,8 +18,10 @@ switch ($action) {
 
 function displayWeek() {
     $week = $_POST["week"];
-    // echo $week;
-    var_dump(bdd_displayWeek($week));
+    intval($week);
+    $upload_data = bdd_displayWeek($week);
+    echo json_encode($upload_data);
+    // var_dump($upload_data[0]["day"]);
     // $reponse = array("error"=>"Erreur dans l'identifiant ou le mot de passe");
 }
 
