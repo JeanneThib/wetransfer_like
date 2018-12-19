@@ -23,7 +23,7 @@
   
 }
 
-#main .container {
+.container {
   max-width: 400px;
   width: 100%;
   margin: 0 auto;
@@ -113,7 +113,9 @@ fieldset {
 }
 
 #contact button[type="submit"]:hover {
-  background: #2b530a;
+  border: 1px solid #c01013;
+  background: white;
+  color: #c01013;
   -webkit-transition: background 0.3s ease-in-out;
   -moz-transition: background 0.3s ease-in-out;
   transition: background-color 0.3s ease-in-out;
@@ -160,3 +162,33 @@ h7{
 .custom-file-upload{
   cursor: pointer;
 }
+// PAGE ADMIN
+.admin{
+    background-image: url(../media/christmas.jpg);
+}
+
+#connexion{
+    background-color: #c01013;
+
+    &:hover{
+        background-color: white;
+        box-shadow: 0px 1px 3px #c01013;
+        color: #c01013;
+    }
+
+    &:focus{
+      background-color: white;
+      background: white;
+      color: #c01013;
+    }
+}
+.login input:focus {
+  outline: none;
+  color: #444;
+  border-color: #c01013;
+  border-left-width: 35px;}
+
+.wrapper{
+  background: none;
+}
+

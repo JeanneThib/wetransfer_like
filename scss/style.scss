@@ -120,7 +120,9 @@ fieldset {
 }
 
 #contact button[type="submit"]:hover {
-  background: #2b530a;
+  border: 1px solid #c01013;
+  background: white;
+  color: #c01013;
   -webkit-transition: background 0.3s ease-in-out;
   -moz-transition: background 0.3s ease-in-out;
   transition: background-color 0.3s ease-in-out;
@@ -173,22 +175,26 @@ h7{
 }
 
 #connexion{
-    background-color: #2b530a;
+    background-color: #c01013;
 
     &:hover{
-        background-color: #c01013;
+      border: 1px solid #c01013;
+        background-color: white;
         box-shadow: 0px 1px 3px #c01013;
+        color: #c01013;
     }
 
     &:focus{
-      background-color: #2b530a;
-      background: #2b530a;
+      border: 1px solid #c01013;
+      background-color: white;
+      background: white;
+      color: #c01013;
     }
 }
 .login input:focus {
   outline: none;
   color: #444;
-  border-color: #2b530a;
+  border-color: #c01013;
   border-left-width: 35px;}
 
 .wrapper{
@@ -196,35 +202,55 @@ h7{
 }
 // DOWNLOAD
 
+
 .download{
-    background-image: url(../media/download.jpg);
+  background-image: url(../media/download.jpg);
 }
 
 .bienvenue{
-  color: white;
-  display: flex;
-  justify-content: center;
+color: white;
+display: flex;
+justify-content: center;
 }
 
 .btn-primary{
-background-color: #2b530a;
-border-color: #2b530a;
+background-color: #c01013;
+border-color:#c01013;
 &:hover{
-  background-color: #c01013;
+  border: 1px solid #c01013;
+  color: #c01013;
+  background-color: white;
   border-color: #c01013;
+
 }
-&::active{
-  background-color: #c01013;
-  border-color: #c01013;
+&:active{
+  color: #c01013 !important;
+  background-color: white !important;
+  border-color: #c01013 !important;
 }
 &:focus{
-  box-shadow: 0 0 0 0.2 #2b530a;
+box-shadow: 0 0 0 0.2rem #c01013 !important;
 }
 
 }
 .telecharge{
-  display: flex;
-  justify-content: center;
-  margin-top: 81px;
+display: flex;
+justify-content: center;
+margin-top: 81px;
 }
 
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+  color: #c01013;
+  background-color: white;
+  border-color: #c01013;
+
+}
+
+// ERREUR 404
+
+
+
+
+
+
+// ERREUR 403
