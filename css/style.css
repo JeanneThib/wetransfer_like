@@ -5,12 +5,26 @@
 
 .download {
   background-image: url(../media/download.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .bienvenue {
-  color: white;
+  color: #c01013;
   display: flex;
   justify-content: center;
+}
+
+.fichier {
+  color: #aaa;
+  display: flex;
+  text-align: center;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .btn-primary {
@@ -37,16 +51,9 @@
   border-color: #c01013;
 }
 
-.telecharge {
-  display: flex;
-  justify-content: center;
-  margin-top: 81px;
-}
-
 body {
   font-family: "Open Sans", sans-serif;
   height: 100vh;
-  background-size: cover;
 }
 
 @keyframes spinner {
@@ -66,10 +73,9 @@ body {
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
   min-height: 100%;
   padding: 20px;
-  background: rgba(4, 40, 68, 0.85);
+  background: rgba(4, 0, 0, 0.85);
 }
 
 .login {
@@ -123,7 +129,7 @@ body {
 .login input:focus {
   outline: none;
   color: #444;
-  border-color: #2196F3;
+  border-color: #c01013;
   border-left-width: 35px;
 }
 .login input:focus + i.fa {
@@ -133,7 +139,7 @@ body {
 }
 .login a {
   font-size: 0.8em;
-  color: #2196F3;
+  color: #c01013;
   text-decoration: none;
 }
 .login .title {
@@ -148,7 +154,7 @@ body {
   width: 100%;
   height: 100%;
   padding: 10px 10px;
-  background: #2196F3;
+  background: #c01013;
   color: #fff;
   display: block;
   border: none;
@@ -181,7 +187,7 @@ body {
   box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
 }
 .login:not(.loading) button:hover {
-  box-shadow: 0px 1px 3px #2196F3;
+  box-shadow: 0px 1px 3px #c01013;
 }
 .login:not(.loading) button:focus {
   border-bottom-width: 4px;
@@ -203,10 +209,12 @@ footer a, footer a:link {
 
 .admin {
   background-image: url(../media/christmas.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #connexion {
-  background-color: #c01013;
+  background-color: #c01013 !important;
 }
 #connexion:hover {
   border: 1px solid #c01013;
@@ -232,6 +240,12 @@ footer a, footer a:link {
   background: none;
 }
 
+.img-fluid {
+  height: 100vh !important;
+}
+
+<<<<<<< HEAD
+=======
 * {
   margin: 0;
   padding: 0;
@@ -252,6 +266,8 @@ footer a, footer a:link {
   line-height: 30px;
   color: #777;
   background-image: url(../media/sapin.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .container {
@@ -302,6 +318,12 @@ fieldset {
 .bouton {
   width: 50px;
   background-image: url(../media/plus.png);
+  background-repeat: no-repeat;
+  background-image: cover;
+}
+
+.img-fluid {
+  height: 100vh !important;
 }
 
 #contact input[type=text],
@@ -395,33 +417,5 @@ h7 {
   cursor: pointer;
 }
 
-.admin {
-  background-image: url(../media/christmas.jpg);
-}
-
-#connexion {
-  background-color: #c01013;
-}
-#connexion:hover {
-  background-color: white;
-  box-shadow: 0px 1px 3px #c01013;
-  color: #c01013;
-}
-#connexion:focus {
-  background-color: white;
-  background: white;
-  color: #c01013;
-}
-
-.login input:focus {
-  outline: none;
-  color: #444;
-  border-color: #c01013;
-  border-left-width: 35px;
-}
-
-.wrapper {
-  background: none;
-}
-
+>>>>>>> origin/jeanne
 /*# sourceMappingURL=style.css.map */

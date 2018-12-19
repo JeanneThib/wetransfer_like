@@ -9,21 +9,20 @@
     <link href="../css/style.css" rel="stylesheet">
 </head>
 
-<body class=" img-fluid download">
+<body id="main" class=" img-fluid download">
     
 {% block download %}
+<base href="{{base_url}}">
 
-    <base href="{{base_url}}">
-
-    <div>
-
-        <h1 class="bienvenue">Bienvenue , </h1>
-        <h2 class="bienvenue">Voici votre fichier vous pouvez le télécharger ici </h2>
-
-            <a href="{{chemin}}" name="bouton" >Télécharger</a>
-
-    </div> 
-
+    <div class="container">
+        <form id="contact" action="controller/ctrl_upload.php" method="post" enctype="multipart/form-data">
+            <h1 class="bienvenue">Bienvenue , </h1>
+            <h2 class="fichier">Voici votre fichier vous pouvez le télécharger ici </h2>
+            <fieldset>
+                <a href="{{chemin}}" class=" btn btn-primary btn-lg" name="bouton" >Télécharger</a>
+            </fieldset>
+        </form>
+    </div>
    
 
 
