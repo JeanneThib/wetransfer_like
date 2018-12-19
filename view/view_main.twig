@@ -2,35 +2,37 @@
 <html lang="fr">
 
 <head>
-    <base href="{{base_url}}">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>wetransfer Groupe 2</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link href="css/style.css" rel="stylesheet">
-    </head>
+  <base href="{{base_url}}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>wetransfer Groupe 2</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <link href="css/style.css" rel="stylesheet">
+</head>
 
 <body id="main" class="img-fluid">
-<div class="container">  
-  <form id="contact" action="controller/ctrl_upload.php" method="post" enctype="multipart/form-data" >
-    <h3>Transférer vos fichiers</h3>
-    <fieldset>
-    <label class="custom-file-upload" for="fichier"><br /><img src="media/plus.png"></label><h7>&nbsp;&nbsp;Ajouter des fichiers</h7>
-    <input type="file" name="fichier" id="fichier"/><br /> 
-    <input type="hidden" name="MAX_FILE_SIZE" value="2097152"> 
-    </fieldset>
-    <fieldset>
-      <input type="text" name="destinataire" placeholder="Email destinataire"></input>
-    </fieldset>
-    <fieldset>
-      <input type="text" name="destinataire2" placeholder="Email Copie"></input>
-    </fieldset>
-    <fieldset>
-      <button name="submit" type="submit" id="envoi" data-submit="...Sending">Envoyer</button>
-    </fieldset>
-  </form>
-</div>
+  <div class="container">
+    <form id="contact" action="controller/ctrl_upload.php" method="post" enctype="multipart/form-data">
+      <h3>Transférer vos fichiers</h3>
+      <fieldset>
+        <label class="custom-file-upload" for="fichier"><br /><img src="media/plus.png"></label>
+        <h7>&nbsp;&nbsp;Ajouter des fichiers</h7>
+        <input type="file" name="fichier" id="fichier" /><br />
+        <input type="hidden" name="MAX_FILE_SIZE" value="2097152">
+      </fieldset>
+      <fieldset>
+        <input type="text" name="destinataire" placeholder="Email destinataire"></input>
+      </fieldset>
+      <fieldset>
+        <input type="text" name="destinataire2" placeholder="Email Copie"></input>
+      </fieldset>
+      <fieldset>
+        <button name="submit" type="submit" id="envoi" data-submit="...Sending">Envoyer</button>
+      </fieldset>
+    </form>
+  </div>
 </body>
 
 </html>

@@ -178,3 +178,34 @@ footer {
     text-decoration: none;
   }
 }
+.admin{
+  background-image: url(../media/christmas.jpg);
+}
+
+#connexion{
+  background-color: #c01013;
+
+  &:hover{
+    border: 1px solid #c01013;
+      background-color: white;
+      box-shadow: 0px 1px 3px #c01013;
+      color: #c01013;
+  }
+
+  &:focus{
+    border: 2px solid #c01013;
+    background-color: white;
+    background: white;
+    color: #c01013;
+  }
+}
+.login input:focus {
+outline: none;
+color: #444;
+border-color: #c01013;
+border-left-width: 35px;}
+
+.wrapper{
+background: none;
+}
+
