@@ -1,10 +1,10 @@
-$primary: #2196F3;
+$primary: #c01013;
 
 body {
   font-family: "Open Sans", sans-serif;
   height: 100vh;
 //   background: url("https://i.imgur.com/HgflTDf.jpg") 50% fixed;
-  background-size: cover;
+  
 }
 
 @keyframes spinner {
@@ -21,7 +21,6 @@ body {
   align-items: center;
   flex-direction: column; 
   justify-content: center;
-  width: 100%;
   min-height: 100%;
   padding: 20px;
   background: rgba(darken($primary,40%), 0.85);
@@ -180,10 +179,12 @@ footer {
 }
 .admin{
   background-image: url(../media/christmas.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #connexion{
-  background-color: #c01013;
+  background-color: #c01013 !important;
 
   &:hover{
     border: 1px solid #c01013;
@@ -207,5 +208,9 @@ border-left-width: 35px;}
 
 .wrapper{
 background: none;
+}
+
+.img-fluid{
+  height: 100vh !important;
 }
 

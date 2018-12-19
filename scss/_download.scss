@@ -1,19 +1,33 @@
 
 .download{
   background-image: url(../media/download.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .bienvenue{
-color: white;
+color: #c01013;
 display: flex;
 justify-content: center;
 }
+.fichier{
+  color: #aaa;
+  display: flex;
+  text-align: center;
+}
+.btn{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
 
 .btn-primary{
-background-color: #c01013;
-border-color:#c01013;
+  background-color: #c01013;
+  border-color:#c01013;
+
 &:hover{
-  border: 1px solid #c01013;
+ 
+border: 1px solid #c01013;
   color: #c01013;
   background-color: white;
   border-color: #c01013;
@@ -34,9 +48,4 @@ box-shadow: 0 0 0 0.2rem #c01013 !important;
   border-color: #c01013;
 
 }
-}
-.telecharge{
-display: flex;
-justify-content: center;
-margin-top: 81px;
 }

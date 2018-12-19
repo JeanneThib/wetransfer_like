@@ -20,6 +20,9 @@
   line-height: 30px;
   color: #777;
   background-image: url(../media/sapin.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  
   
 }
 
@@ -70,8 +73,13 @@ fieldset {
 .bouton{
   width: 50px;
   background-image: url(../media/plus.png);
+  background-repeat: no-repeat;
+  background-image: cover;
 }
 
+.img-fluid {
+   height: 100vh !important; 
+}
 #contact input[type="text"],
 #contact input[type="email"],
 #contact input[type="tel"],
@@ -162,33 +170,5 @@ h7{
 .custom-file-upload{
   cursor: pointer;
 }
-// PAGE ADMIN
-.admin{
-    background-image: url(../media/christmas.jpg);
-}
 
-#connexion{
-    background-color: #c01013;
-
-    &:hover{
-        background-color: white;
-        box-shadow: 0px 1px 3px #c01013;
-        color: #c01013;
-    }
-
-    &:focus{
-      background-color: white;
-      background: white;
-      color: #c01013;
-    }
-}
-.login input:focus {
-  outline: none;
-  color: #444;
-  border-color: #c01013;
-  border-left-width: 35px;}
-
-.wrapper{
-  background: none;
-}
 
