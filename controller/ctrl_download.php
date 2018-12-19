@@ -30,7 +30,7 @@ function showDownload() {
     global $twig;
     
     // Requete SQL avec identifiant du fichier
-    $file = getFile (substr(  strrchr($_SERVER['REQUEST_URI'], '/')  ,1));
+    $file = getFileDB (substr(  strrchr($_SERVER['REQUEST_URI'], '/')  ,1));
     
         // Boucle pour parcourir le tableau de tableaux et récupérer les données de la BDD
         foreach ($file as $key) {
@@ -49,7 +49,7 @@ function showDownload() {
 function getFile(){
        
     // Requete SQL avec identifiant du fichier
-    $file = getFile (substr(  strrchr($_SERVER['REQUEST_URI'], '/')  ,1));
+    $file = getFileDB (substr(  strrchr($_SERVER['REQUEST_URI'], '/')  ,1));
     
         // Boucle pour parcourir le tableau de tableaux et récupérer les données de la BDD
         foreach ($file as $key) {
