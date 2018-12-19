@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/JeanneThib/wetransfer_like#readme",
   "dependencies": {
-    "mjml": "^4.2.1"
+    "mjml": "^4.2.1",
+    "sass": "^1.15.2"
   },
   "devDependencies": {}
 }
