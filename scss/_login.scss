@@ -183,22 +183,26 @@ footer {
 }
 
 #connexion{
-  background-color: #2b530a;
+  background-color: #c01013;
 
   &:hover{
-      background-color: #c01013;
+    border: 1px solid #c01013;
+      background-color: white;
       box-shadow: 0px 1px 3px #c01013;
+      color: #c01013;
   }
 
   &:focus{
-    background-color: #2b530a;
-    background: #2b530a;
+    border: 2px solid #c01013;
+    background-color: white;
+    background: white;
+    color: #c01013;
   }
 }
 .login input:focus {
 outline: none;
 color: #444;
-border-color: #2b530a;
+border-color: #c01013;
 border-left-width: 35px;}
 
 .wrapper{

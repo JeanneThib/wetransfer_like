@@ -1,32 +1,42 @@
 
 .download{
-    background-image: url(../media/download.jpg);
+  background-image: url(../media/download.jpg);
 }
 
 .bienvenue{
-  color: white;
-  display: flex;
-  justify-content: center;
+color: white;
+display: flex;
+justify-content: center;
 }
 
 .btn-primary{
-background-color: #2b530a;
-border-color: #2b530a;
+background-color: #c01013;
+border-color:#c01013;
 &:hover{
-  background-color: #c01013;
+  border: 1px solid #c01013;
+  color: #c01013;
+  background-color: white;
   border-color: #c01013;
-}
-&::active{
-  background-color: #c01013;
-  border-color: #c01013;
-}
-&:focus{
-  box-shadow: 0 0 0 0.2 #2b530a;
-}
 
 }
+&:active{
+ 
+  color: #c01013 !important;
+  background-color: white !important;
+  border-color: #c01013 !important;
+}
+&:focus{
+box-shadow: 0 0 0 0.2rem #c01013 !important;
+}
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+  color: #c01013;
+  background-color: white;
+  border-color: #c01013;
+
+}
+}
 .telecharge{
-  display: flex;
-  justify-content: center;
-  margin-top: 81px;
+display: flex;
+justify-content: center;
+margin-top: 81px;
 }
