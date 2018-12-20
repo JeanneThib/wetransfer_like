@@ -20,8 +20,10 @@ function displayUpload() {
     $week = $_POST["week"];
     intval($week);
     $upload_data = bdd_displayUpload($week);
-    $extension_data = bdd_displayExtension($week);
-    $jsonData = array('upload' => $upload_data, 'extension' => $extension_data);;
+    $extension_upload = bdd_uploadExtension($week);
+    $extension_download = bdd_downloadExtension($week);
+    $download_data = bdd_displayDownload($week);
+    $jsonData = array('upload' => $upload_data, 'upload_extension' => $extension_upload, 'download_extension' => $extension_download, 'download' => $download_data);
     // var_dump($extension_data);
     echo json_encode($jsonData);
     // var_dump($upload_data[0]["day"]);
