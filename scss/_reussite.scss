@@ -25,6 +25,11 @@
   h8 {
     color: black;
   }
+
+  .btn{
+    background-color: #c01013 !important;
+    color: white !important;
+  }
   
   @media (max-width: 401px) {
     #trans {
@@ -72,4 +77,6 @@
       font-size: 1.75rem;
       
     }
+
+  
   }
