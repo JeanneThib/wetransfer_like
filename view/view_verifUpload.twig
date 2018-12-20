@@ -20,11 +20,11 @@
         <p>{{nom}}</p>
       </fieldset>
       <fieldset>
-        {# {% if {{{taille < 1000}}} %} #}
+        {% if taille < 1000 %}
           <p>{{taille}} Ko</p>
-        {# {% else %} #}
-          {# <p>{{taille}} Mo</p>             #}
-        {# {% endif %} #}
+        {% else %}
+          <p>{{(taille / 1000) | number_format(2)}} Mo</p>            
+        {% endif %}
       </fieldset>
       <fieldset>
         <p>{{lien}}</p>
