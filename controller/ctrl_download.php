@@ -44,7 +44,7 @@ function showDownload() {
     $filepath = $_SERVER['DOCUMENT_ROOT'].'/wetransfer_like/cloud/'.$link_id.'.'.$extension;
 
     // Render twig de la page
-    echo $twig->render('view_download.twig', array('base_url'=>$base_url ,'chemin'=> '../download/'.$link_id));
+    echo $twig->render('view_download.twig', array('base_url'=>$base_url ,'chemin'=> 'download/download/'.$link_id));
 }
 
 function getFile(){
@@ -53,10 +53,13 @@ function getFile(){
     $file = getFileDB (substr(  strrchr($_SERVER['REQUEST_URI'], '/')  ,1));
     
         // Boucle pour parcourir le tableau de tableaux et récupérer les données de la BDD
-        foreach ($file as $key) {
+        foreach ($file as $key) { 
             $extension = $key['extension'];
             $link_id = $key['link_id'];
+            $curr_date = date('Y-m-d');
         }
+
+    insertDownload($extension, $link_id, $curr_date);
 
     // Chemin du fichier à télécharger
     $filepath = $_SERVER['DOCUMENT_ROOT'].'/wetransfer_like/cloud/'.$link_id.'.'.$extension;
