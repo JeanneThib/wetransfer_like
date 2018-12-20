@@ -34,6 +34,7 @@ function verifUpload(){
 
     // Taille maximale autorisée en octets (2Mo)
     $maxSize = 2048576;
+
     if ((($fileSize > 0) && ($fileSize < 2048576)) == 1){
 
         $fileSize = $_FILES['fichier']['size'];
@@ -88,20 +89,24 @@ function verifUpload(){
         };
 
         // ===== ENVOI BDD =====
+
         if (insertDB($name, $full, $date, $fileSize, $ext) != false) {
+
         // ====== ENVOI MAIL =====
             
         ini_set( 'display_errors', 1 );
 
         error_reporting( E_ALL );
         
-        $from = "";
+        $from = "WeTransfer@file.com";
         
-        $to = $_POST["destinataire"].', '.$_POST["destinataire2"];
+        $to = $_POST["destinataire"];
         
-        
+        if(isset($_POST["destinataire2"])){
+            $to .= ', '.$_POST["destinataire2"];
+        }
+        var_dump();
         $subject = "Un fichier est à votre disposition";
-        
 
         // Déclaration du message en HTML
         $message_html = $twig->render('mail.twig',array("url" => $dlLink));
@@ -110,7 +115,7 @@ function verifUpload(){
         // Création de la boundary
         $boundary = "-----=".md5(rand());
         // Création du header de l'email
-        $header = "From: \"Moi-même\"<".$from.">".$passage_ligne;
+        $header = "From: \"WeTransfer\"<".$from.">".$passage_ligne;
         $header.= "MIME-Version: 1.0".$passage_ligne;
         $header .= "Content-Type: text/html; charset=\"UTF8\"";
         // Création du message
@@ -127,18 +132,18 @@ function verifUpload(){
         //==========
         
         // Envoi de l'email
-        if (mail($to,$subject,$message_html, $header) != false){
-
-            global $twig, $base_url;
-            echo $twig->render('view_verifUpload.twig',
-            array('base_url'=>$base_url,'titre' => 'Transfert réussit !', 'nom' => $fullName, 'taille' => $fileSize, 'lien' => $dlLink));
-            
-        } else {
-            
+        if (mail($to,$subject,$message_html, $header) == false){
+                
             global $twig, $base_url;
             echo $twig->render('view_verifUpload.twig',
             array('base_url'=>$base_url,'titre' => 'Un problème est survenu.', 'description' => "L'envoi du mail a échoué."));
-
+            
+        } else {            
+            
+            global $twig, $base_url;
+            echo $twig->render('view_verifUpload.twig',
+            array('base_url'=>$base_url,'titre' => 'Transfert réussit !', 'nom' => $fullName, 'taille' => $fileSize, 'lien' => $dlLink));
+        
         }
         
     } else {
@@ -152,7 +157,7 @@ function verifUpload(){
             
     global $twig, $base_url;
     echo $twig->render('view_verifUpload.twig',
-    array('base_url'=>$base_url,'titre' => 'Un problème est survenu.', 'description' => "Votre fichier n'a pas pu être enregistré par nos services."));
+    array('base_url'=>$base_url,'titre' => 'Un problème est survenu.', 'description' => "La taille de votre fichier est trop importante ( supérieure à 2Mo) ou votre fichier est vide."));
 
 }
 

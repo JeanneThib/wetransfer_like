@@ -14,6 +14,9 @@ function insertDB($name, $url, $date, $fileSize, $ext){
     $response->bindParam(':fileSize', $fileSize, PDO::PARAM_INT);
     $response->bindParam(':ext', $ext, PDO::PARAM_STR);
     $response->execute();
+
+    if($response) return true;
+    else return false;
 }
 
 ?>
