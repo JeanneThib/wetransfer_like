@@ -100,12 +100,23 @@ function verifUpload(){
         
         $from = "WeTransfer@file.com";
         
-        $to = $_POST["destinataire"];
+        if (($_POST["destinataire"] != "") && (filter_var($_POST["destinataire"], FILTER_VALIDATE_EMAIL))){
+
+            $to = $_POST["destinataire"];
+
+            if (($_POST["destinataire2"] != "") && (filter_var($_POST["destinataire2"], FILTER_VALIDATE_EMAIL))){
+
+                $to = $_POST["destinataire"].', '.$_POST["destinataire2"];
+            
+            }
+
+        } else {
+            $to = '"';
         
-        if(isset($_POST["destinataire2"])){
-            $to .= ', '.$_POST["destinataire2"];
         }
-        var_dump();
+        
+        var_dump($to);
+
         $subject = "Un fichier est à votre disposition";
 
         // Déclaration du message en HTML
@@ -132,18 +143,26 @@ function verifUpload(){
         //==========
         
         // Envoi de l'email
-        if (mail($to,$subject,$message_html, $header) == false){
-                
+        if (mail($to,$subject,$message_html, $header) === false){
+
+            $verifMail = false;
+        } else {
+            $verifMail = true;
+
+        }
+
+        if ($verifMail){
+
+            global $twig, $base_url;
+            echo $twig->render('view_verifUpload.twig',
+            array('base_url'=>$base_url,'titre' => 'Transfert réussi !', 'nom' => $fullName, 'taille' => $fileSize, 'lien' => $dlLink));
+            
+        } else {          
+            
             global $twig, $base_url;
             echo $twig->render('view_verifUpload.twig',
             array('base_url'=>$base_url,'titre' => 'Un problème est survenu.', 'description' => "L'envoi du mail a échoué."));
             
-        } else {            
-            
-            global $twig, $base_url;
-            echo $twig->render('view_verifUpload.twig',
-            array('base_url'=>$base_url,'titre' => 'Transfert réussit !', 'nom' => $fullName, 'taille' => $fileSize, 'lien' => $dlLink));
-        
         }
         
     } else {
@@ -163,4 +182,3 @@ function verifUpload(){
 
 
 }
-?>
