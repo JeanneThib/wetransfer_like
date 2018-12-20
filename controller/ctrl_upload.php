@@ -84,7 +84,7 @@ function verifUpload(){
 
         // Si $resultat = true
         if ($resultat){
-            $dlLink = 'http://localhost/wetransfer_like/download/show/' . $full;
+            $dlLink = 'https://jeannet.promo-23.codeur.online/wetransfer_like/download/show/' . $full;
         };
 
         // ===== ENVOI BDD =====
