@@ -3,6 +3,12 @@
   width: 200px;
 }
 
+.deconnect {
+  margin-top: 0px !important;
+  width: 69px;
+  border-radius: 50%;
+}
+
 #upload {
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-weight: 100;
@@ -265,7 +271,6 @@ footer a, footer a:link {
   display: flex !important;
   justify-content: center;
   font-weight: bold !important;
-  font-size: 1.75rem;
 }
 
 .result {
@@ -314,6 +319,14 @@ h8 {
 
   h8 {
     font-size: 0.6rem !important;
+  }
+
+  .transfert {
+    color: #c01013;
+    display: flex !important;
+    justify-content: center;
+    font-weight: bold !important;
+    font-size: 1.75rem;
   }
 }
 * {
