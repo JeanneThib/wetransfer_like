@@ -1,5 +1,5 @@
 <?php
-require_once "model/mdl_upload.php";
+require_once 'model/mdl_upload.php';
 require_once 'vendor/autoload.php';
 
 $loader = new Twig_Loader_Filesystem('view');
@@ -51,7 +51,8 @@ function verifUpload(){
         
         // Taille du fichier
         $fileSize = $_FILES['fichier']['size'];
-        
+        $fileSize /= 1000;
+        $fileSize = round($fileSize);
         // Taille maximale autorisée en octets (2Mo)
         $maxSize = 2048576;
 
