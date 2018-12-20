@@ -184,18 +184,18 @@ footer {
 }
 
 #connexion{
-  background-color: #c01013 !important;
+  background-color: #c01013 ;
 
   &:hover{
     border: 1px solid #c01013;
-      background-color: white;
+      background-color: white !important;
       box-shadow: 0px 1px 3px #c01013;
       color: #c01013;
   }
 
   &:focus{
     border: 2px solid #c01013;
-    background-color: white;
+    background-color: white !important;
     background: white;
     color: #c01013;
   }

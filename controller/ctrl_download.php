@@ -21,13 +21,14 @@ switch ($action) {
 }
 
 function show404() {
-    global $twig;
-    echo $twig->render('view_404.twig');
+    global $twig , $base_url;
+    echo $twig->render('view_404.twig',
+    array('base_url'=>$base_url));
 }
 
 function showDownload() {
 
-    global $twig;
+    global $twig , $base_url;
     
     // Requete SQL avec identifiant du fichier
     $file = getFileDB (substr(  strrchr($_SERVER['REQUEST_URI'], '/')  ,1));
@@ -43,7 +44,7 @@ function showDownload() {
     $filepath = $_SERVER['DOCUMENT_ROOT'].'/wetransfer_like/cloud/'.$link_id.'.'.$extension;
 
     // Render twig de la page
-    echo $twig->render('view_download.twig', array('chemin'=> '../download/'.$link_id));
+    echo $twig->render('view_download.twig', array('base_url'=>$base_url ,'chemin'=> '../download/'.$link_id));
 }
 
 function getFile(){

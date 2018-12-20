@@ -79,8 +79,9 @@
 
 
     function showForm() {
-        global $twig;
-        echo $twig->render('view_admin.twig');
+        global $twig , $base_url;
+        echo $twig->render('view_admin.twig' , 
+        array('base_url'=>$base_url));
     }
 
 

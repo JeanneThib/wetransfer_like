@@ -8,9 +8,8 @@ $twig = new Twig_Environment($loader);
 
 function myFunction() {
     global $twig, $base_url;
-    $test = "test";
     echo $twig->render('view_main.twig',
-    array('test' => $test));
+    array('base_url'=>$base_url));
 };
 
 myFunction();
