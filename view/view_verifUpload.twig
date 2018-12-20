@@ -12,18 +12,27 @@
   <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body id="main" class="img-fluid">
+<body id="resultat" class="img-fluid">
   <div class="wrapper">
     <form id="contact" action="controller/ctrl_upload.php" method="post" enctype="multipart/form-data">
-      <h3>Transfert réussit !</h3>
+      <h3 class="transfert">Transfert réussit !</h3>
       <fieldset>
-        <p>{{nom}}</p>
+        <h7 class="result">Nom de votre fichier: </h7>
+        </fieldset>
+       <fieldset>
+       <h8> {{nom}}</h8>
       </fieldset>
       <fieldset>
-        <p>{{taille}}</p>
+        <h7 class="result">Taille de votre fichier :</h7>
       </fieldset>
       <fieldset>
-        <p>{{lien}}</p>
+        <h8>{{taille}} octets</h8>
+      </fieldset>
+      <fieldset>
+        <h7 class="result">Lien de votre fichier envoyé :</h7>
+      </fieldset>
+      <fieldset>
+        <h8>{{lien}}</h8>
       </fieldset>
     </form>
   </div>

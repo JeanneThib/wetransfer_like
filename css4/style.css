@@ -3,12 +3,7 @@
   width: 200px;
 }
 
-#upload {
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
-  font-weight: 100;
-  font-size: 12px;
-  line-height: 30px;
-  color: #777;
+.download {
   background-image: url(../media/download.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -427,7 +422,7 @@ h7 {
 body {
   padding: 0;
   margin: 0;
-  background-color: white;
+  background-color: #c01013;
 }
 
 #notfound {
@@ -494,22 +489,18 @@ body {
   display: inline-block;
   font-weight: 700;
   text-decoration: none;
-  color: #c01013;
+  color: #fff;
   text-transform: uppercase;
   padding: 13px 23px;
-  background: white;
+  background: #ff6300;
   font-size: 18px;
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
 }
 
 .notfound a:hover {
-  color: #c01013;
-  background: white;
-}
-
-.autorise {
-  color: #c01013 !important;
+  color: #ff6300;
+  background: #211b19;
 }
 
 @media only screen and (max-width: 767px) {
@@ -544,7 +535,7 @@ body {
 body {
   padding: 0;
   margin: 0;
-  background-color: white;
+  background-color: #c01013;
 }
 
 #notfound {
@@ -604,7 +595,6 @@ body {
   bottom: 0px;
   left: 0;
   right: 0;
-  border: 1px solid black;
 }
 
 .notfound a {
@@ -612,27 +602,22 @@ body {
   display: inline-block;
   font-weight: 700;
   text-decoration: none;
-  color: white;
+  color: #c01013;
   text-transform: uppercase;
   padding: 13px 23px;
-  background: #c01013;
+  background: white;
   font-size: 18px;
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
 }
 
 .notfound a:hover {
-  color: white;
-  background: #c01013;
+  color: #c01013;
+  background: white;
 }
 
 .autorise {
-  color: #c01013 !important;
-}
-
-.oops {
-  color: #c01013 !important;
-  font-weight: bold !important;
+  color: #c01013;
 }
 
 @media only screen and (max-width: 767px) {
@@ -658,28 +643,6 @@ body {
     padding: 7px 15px;
     font-size: 14px;
   }
-}
-#resultat {
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
-  font-weight: 100;
-  font-size: 12px;
-  line-height: 30px;
-  color: #777;
-  background-image: url(../media/resultat.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.transfert {
-  color: #c01013;
-  display: flex !important;
-  justify-content: center;
-  font-weight: bold !important;
-}
-
-.result {
-  color: black;
-  font-weight: bold;
 }
 
 /*# sourceMappingURL=style.css.map */
