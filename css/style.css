@@ -214,17 +214,17 @@ footer a, footer a:link {
 }
 
 #connexion {
-  background-color: #c01013 !important;
+  background-color: #c01013;
 }
 #connexion:hover {
   border: 1px solid #c01013;
-  background-color: white;
+  background-color: white !important;
   box-shadow: 0px 1px 3px #c01013;
   color: #c01013;
 }
 #connexion:focus {
   border: 2px solid #c01013;
-  background-color: white;
+  background-color: white !important;
   background: white;
   color: #c01013;
 }
@@ -240,11 +240,9 @@ footer a, footer a:link {
   background: none;
 }
 
-
 .img-fluid {
   height: 100vh !important;
 }
-
 
 * {
   margin: 0;
@@ -266,17 +264,11 @@ footer a, footer a:link {
   line-height: 30px;
   color: #777;
   background-image: url(../media/sapin.jpg);
-
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.container {
-
-}
-
 #main .container {
-
   max-width: 400px;
   width: 100%;
   margin: 0 auto;
@@ -295,7 +287,6 @@ footer a, footer a:link {
 #contact {
   background: #F9F9F9;
   padding: 25px;
-  margin: 150px 0;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
@@ -422,36 +413,5 @@ h7 {
 .custom-file-upload {
   cursor: pointer;
 }
-
-
-.admin {
-  background-image: url(../media/christmas.jpg);
-}
-
-#connexion {
-  background-color: #c01013;
-}
-#connexion:hover {
-  background-color: white;
-  box-shadow: 0px 1px 3px #c01013;
-  color: #c01013;
-}
-#connexion:focus {
-  background-color: white;
-  background: white;
-  color: #c01013;
-}
-
-.login input:focus {
-  outline: none;
-  color: #444;
-  border-color: #c01013;
-  border-left-width: 35px;
-}
-
-.wrapper {
-  background: none;
-}
-
 
 /*# sourceMappingURL=style.css.map */

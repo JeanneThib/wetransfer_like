@@ -92,7 +92,7 @@ function verifUpload(){
         // Si $resultat = true
         if ($resultat){
             echo "Transfert réussi </br>";
-            $dlLink = 'https://jeannet.promo-23.codeur.online/wetransfer_like/download/show/' . $full;
+            $dlLink = 'https://localhost/wetransfer_like/download/show/' . $full;
             echo $id;
         };
         
