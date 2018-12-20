@@ -85,7 +85,7 @@ function verifUpload(){
 
         // Si $resultat = true
         if ($resultat){
-            $dlLink = 'http://localhost/wetransfer_like/download/show/' . $full;
+            $dlLink = 'http://localhost:8080/wetransfer_like/download/show/' . $full;
         };
 
         // ===== ENVOI BDD =====
@@ -94,13 +94,13 @@ function verifUpload(){
         // if (insertDB() != false) {
         // ====== ENVOI MAIL =====
             
-            ini_set( 'display_errors', 1 );
+        ini_set( 'display_errors', 1 );
 
         error_reporting( E_ALL );
         
         $from = "test.form@gmail.com";
         
-        $to = $_POST["destinataire"].', '.$_POST["destinataire2"].', '."jules.p@codeur.online";
+        $to = $_POST["destinataire"].', '.$_POST["destinataire2"];
         
         
         $subject = "Vérification PHP mail";

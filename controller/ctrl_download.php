@@ -44,7 +44,7 @@ function showDownload() {
     $filepath = $_SERVER['DOCUMENT_ROOT'].'/wetransfer_like/cloud/'.$link_id.'.'.$extension;
 
     // Render twig de la page
-    echo $twig->render('view_download.twig', array('base_url'=>$base_url ,'chemin'=> '../download/'.$link_id));
+    echo $twig->render('view_download.twig', array('base_url'=>$base_url ,'chemin'=> 'download/download/'.$link_id));
 }
 
 function getFile(){
