@@ -2,7 +2,7 @@
 require_once 'model/mdl_upload.php';
 require_once 'vendor/autoload.php';
 
-$loader = new Twig_Loader_Filesystem('../view');
+$loader = new Twig_Loader_Filesystem('view');
 $twig = new Twig_Environment($loader);
 
 $erreur = "";
@@ -12,28 +12,33 @@ switch ($action) {
     case 'result':
         verifUpload();
         break;
-    case '404':
-        showError();
+    default:
+        showUpload();
         break;
 }
 
+function showUpload() {
+    global $twig, $base_url;
+    echo $twig->render('view_main.twig',
+    array('base_url'=>$base_url));
+}
 
 function verifUpload(){
-    echo $_SERVER["REQUEST_URI"];
+    global $twig, $base_url;
+
     $_FILES['fichier']['name'];     //Le idnom original du fichier, comme sur le disque du visiteur (exemple : mon_icone.png).
     $_FILES['fichier']['type'];     //Le type du fichier. Par exemple, cela peut être « image/png ».
     $_FILES['fichier']['size'];     //La taille du fichier en octets.
     $_FILES['fichier']['tmp_name']; //L'adresse vers le fichier uploadé dans le répertoire temporaire.
     $_FILES['fichier']['error'];    //Le code d'erreur, qui permet de savoir si le fichier a bien été uploadé.
 
-    if ($_FILES['fichier']['size'] != 0 && $_FILES['fichier']['size'] < $_POST['MAX_FILE_SIZE']){
+    // if ($_FILES['fichier']['size'] != 0 && $_FILES['fichier']['size'] < $_POST['MAX_FILE_SIZE']){
         
         // Récupération de la date de d'upload
-        echo $date = date('Y-m-d');
+        $date = date('Y-m-d');
 
         // Numéro de semain en fonction de la date d'upload
         $week = strtotime ($date);
-        echo '</br>Semaine : '.date('W',$week);
 
         // idNom complet du fichier
         $fullName = $_FILES['fichier']['name'];
@@ -46,19 +51,10 @@ function verifUpload(){
         
         // Taille du fichier
         $fileSize = $_FILES['fichier']['size'];
-        
-        // Taille maximale autorisée en octets (1Mo)
+        $fileSize /= 1000;
+        $fileSize = round($fileSize);
+        // Taille maximale autorisée en octets (2Mo)
         $maxSize = 2048576;
-        
-
-        echo '</br>';
-        echo '<b>idNom brut : </b>'.$fullName.'</br>';
-        echo '<b>idNom sans extension : </b>'.$name.'</br>';
-        echo '<b>Extension : </b>'.$ext.'</br>';
-        echo '<b>Taille en Octets : </b>'.$fileSize.'</br>';
-        echo '</br>';
-
-        echo ini_get('upload_max_filesize');
 
         // if ($_FILES['fichier']['error'] > 0) $erreur = "Erreur lors du transfert";
         // if ($_FILES['fichier']['size'] > $maxSize) $erreur = "Le fichier est trop gros";
@@ -77,7 +73,6 @@ function verifUpload(){
 
         $filename = $_SERVER["DOCUMENT_ROOT"].'/'.'wetransfer_like/cloud/' .$full.'.'.$ext;
 
-        // echo '</br>' . !file_exists($filename) . '</br>';
         if(!file_exists($filename)) {
         $resultat = move_uploaded_file($_FILES['fichier']['tmp_name'],$_SERVER["DOCUMENT_ROOT"]."/".'wetransfer_like/cloud/' .$full.'.'.$ext);
     } else {
@@ -91,18 +86,14 @@ function verifUpload(){
 
         // Si $resultat = true
         if ($resultat){
-            echo "Transfert réussi </br>";
-            $dlLink = 'https://localhost/wetransfer_like/download/show/' . $full;
-            echo $id;
+            $dlLink = 'http://localhost/wetransfer_like/download/show/' . $full;
         };
-        
-        echo $dlLink;
 
         // ===== ENVOI BDD =====
         insertDB($name, $full, $date, $fileSize, $ext);
 
-        if (insertDB() != false) {
-            // ====== ENVOI MAIL =====
+        // if (insertDB() != false) {
+        // ====== ENVOI MAIL =====
             
             ini_set( 'display_errors', 1 );
 
@@ -141,15 +132,20 @@ function verifUpload(){
         
         // Envoi de l'email
         mail($to,$subject,$message_html, $header);
-        if (mail() == false){
-            echo "L'envoi du mail à échoué.";    
-        }
+//         if (mail() == false){
+//             echo "L'envoi du mail a échoué.";    
+//         }
         
-    } else {
-        echo "L'enregistrement à échoué ";
-    }
-    } else {
-        echo 'Taille de fichier invalide';
-    }
+    // } else {
+//         echo "L'enregistrement a échoué ";
+//     }
+// } else {
+//     echo 'Taille de fichier invalide';
+// }
+
+global $twig, $base_url;
+echo $twig->render('view_verifUpload.twig',
+array('base_url'=>$base_url, 'nom' => $fullName, 'taille' => $fileSize, 'lien' => $dlLink));
+
 }
 ?>
