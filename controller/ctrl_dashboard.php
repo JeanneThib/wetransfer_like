@@ -8,7 +8,7 @@ $twig = new Twig_Environment($loader);
 
 switch ($action) {
     case 'week':
-        displayWeek();
+        displayUpload();
         break;
     
     default:
@@ -16,11 +16,14 @@ switch ($action) {
         break;
 }
 
-function displayWeek() {
+function displayUpload() {
     $week = $_POST["week"];
     intval($week);
-    $upload_data = bdd_displayWeek($week);
-    echo json_encode($upload_data);
+    $upload_data = bdd_displayUpload($week);
+    $extension_data = bdd_displayExtension($week);
+    $jsonData = array('upload' => $upload_data, 'extension' => $extension_data);;
+    // var_dump($extension_data);
+    echo json_encode($jsonData);
     // var_dump($upload_data[0]["day"]);
     // $reponse = array("error"=>"Erreur dans l'identifiant ou le mot de passe");
 }

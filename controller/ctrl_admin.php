@@ -74,7 +74,7 @@
     function deconnexion() {
         session_unset();    
         session_destroy(); 
-        header('Location: /wetransfer_like');
+        header('Location: /wetransfer_like/admin');
     }
 
 
