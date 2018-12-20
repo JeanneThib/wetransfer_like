@@ -249,35 +249,6 @@ footer a, footer a:link {
   height: 100vh !important;
 }
 
-#trans {
-  background: #F9F9F9;
-  padding: 25px;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-}
-
-#trans input[type=text],
-#trans input[type=email],
-#trans input[type=tel],
-#trans input[type=url],
-#trans textarea,
-#trans button[type=submit] {
-  font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
-}
-
-#trans h3 {
-  display: block;
-  font-size: 30px;
-  font-weight: 300;
-  margin-bottom: 10px;
-}
-
-#trans h4 {
-  margin: 5px 0 15px;
-  display: block;
-  font-size: 13px;
-  font-weight: 400;
-}
-
 #resultat {
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-weight: 100;
@@ -294,6 +265,7 @@ footer a, footer a:link {
   display: flex !important;
   justify-content: center;
   font-weight: bold !important;
+  font-size: 1.75rem;
 }
 
 .result {
@@ -326,6 +298,7 @@ h8 {
     font-size: 30px;
     font-weight: 300;
     margin-bottom: 10px;
+    font-size: 1.75rem;
   }
 
   #trans h4 {
