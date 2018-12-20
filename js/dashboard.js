@@ -1,5 +1,5 @@
 let sel = document.querySelector('#week');
-var bar_chart = new Chart(document.getElementById("bar-chart"));
+// var bar_chart = new Chart(document.getElementById("bar-chart"));
 
 // fonction semaine
 $( document ).ready(function() {
@@ -80,8 +80,13 @@ $( document ).ready(function() {
     fetch("/wetransfer_like/dashboard/week/" + sel.value, {method: "POST", body: firstData})
     .then( (result) => { return result.json() } )
     .then( (result) => {
-        bar_chart.destroy();
+        // bar_chart.destroy();
+        // pie_chart.destroy();
+        // pie_chart2.destroy();
         uploadArr = [0,0,0,0,0,0,0];
+        extArr = [0,0,0,0,0,0,0];
+        extUpArr = [0,0,0,0,0,0,0];
+        downloadArr = [0,0,0,0,0,0,0];
         for (let i = 0; i < result["upload"].length; i++) {
             jour = parseInt(result["upload"][i]["day"]);
             if(jour === 1) {
@@ -93,39 +98,79 @@ $( document ).ready(function() {
             // console.log(uploadArr);
         }
 
-        for (let j = 0; j < result["extension"].length; j++) {
-            extension = result["extension"][j]["extension"];
+        for (let j = 0; j < result["upload_extension"].length; j++) {
+            extension = result["upload_extension"][j]["extension"];
 
             switch (extension) {
                 case "png":
-                    extArr[0] = parseInt(result["extension"][j]["percent"]);
+                    extArr[0] = parseInt(result["upload_extension"][j]["percent"]);
                     break;
                 case "jpg":
-                    extArr[1] = parseInt(result["extension"][j]["percent"]);                    
+                    extArr[1] = parseInt(result["upload_extension"][j]["percent"]);                    
                     break;
                 case "pdf":
-                    extArr[2] = parseInt(result["extension"][j]["percent"]);                
+                    extArr[2] = parseInt(result["upload_extension"][j]["percent"]);                
                     break;
                 case "xlsx":
-                    extArr[3] = parseInt(result["extension"][j]["percent"]);                    
+                    extArr[3] = parseInt(result["upload_extension"][j]["percent"]);                    
                     break;
                 case "docx":
-                    extArr[4] = parseInt(result["extension"][j]["percent"]);                    
+                    extArr[4] = parseInt(result["upload_extension"][j]["percent"]);                    
                     break;
                 case "zip":
-                    extArr[5] = parseInt(result["extension"][j]["percent"]);                                       
+                    extArr[5] = parseInt(result["upload_extension"][j]["percent"]);                                       
                     break;
             
                 default:
-                    extArr[6] += parseInt(result["extension"][j]["percent"]);
+                    extArr[6] += parseInt(result["upload_extension"][j]["percent"]);
                     break;
             }
         }
-        console.log(uploadArr);
+
+        for (let k = 0; k < result["download_extension"].length; k++) {
+            extension_download = result["download_extension"][k]["extension"];
+
+            switch (extension_download) {
+                case "png":
+                    extUpArr[0] = parseInt(result["download_extension"][k]["percent"]);
+                    break;
+                case "jpg":
+                    extUpArr[1] = parseInt(result["download_extension"][k]["percent"]);                    
+                    break;
+                case "pdf":
+                    extUpArr[2] = parseInt(result["download_extension"][k]["percent"]);                
+                    break;
+                case "xlsx":
+                    extUpArr[3] = parseInt(result["download_extension"][k]["percent"]);                    
+                    break;
+                case "docx":
+                    extUpArr[4] = parseInt(result["download_extension"][k]["percent"]);                    
+                    break;
+                case "zip":
+                    extUpArr[5] = parseInt(result["download_extension"][k]["percent"]);                                       
+                    break;
+            
+                default:
+                    extUpArr[6] += parseInt(result["download_extension"][k]["percent"]);
+                    break;
+            }
+        }
+
+        for (let l = 0; l < result["download"].length; l++) {
+            jour = parseInt(result["download"][l]["day"]);
+            if(jour === 1) {
+                downloadArr[6] = result["download"][l]["nbr"];   
+            } else {
+                downloadArr[(jour - 2)] = result["download"][l]["nbr"];
+            }
+        }
+        console.log(downloadArr);
 
 
         chartBar();
         chartPie();
+        chartPie2();
+        chartLine();
         
     });
 
@@ -140,6 +185,9 @@ document.addEventListener('DOMContentLoaded',function() {
 
 var uploadArr = [0,0,0,0,0,0,0];
 var extArr = [0,0,0,0,0,0,0];
+var extUpArr = [0,0,0,0,0,0,0];
+var downloadArr = [0,0,0,0,0,0,0];
+
 
 function changeWeek() {
     
@@ -153,8 +201,12 @@ function changeWeek() {
         console.log(result["upload"]);
         bar_chart.destroy();
         pie_chart.destroy();
+        pie_chart2.destroy();
+        line_chart.destroy();
         uploadArr = [0,0,0,0,0,0,0];
         extArr = [0,0,0,0,0,0,0];
+        extUpArr = [0,0,0,0,0,0,0];
+        downloadArr = [0,0,0,0,0,0,0];
         for (let i = 0; i < result["upload"].length; i++) {
             jour = parseInt(result["upload"][i]["day"]);
             if(jour === 1) {
@@ -166,32 +218,70 @@ function changeWeek() {
             // console.log(uploadArr);
         }
 
-        for (let j = 0; j < result["extension"].length; j++) {
-            extension = result["extension"][j]["extension"];
+        for (let j = 0; j < result["upload_extension"].length; j++) {
+            extension = result["upload_extension"][j]["extension"];
 
             switch (extension) {
                 case "png":
-                    extArr[0] = parseInt(result["extension"][j]["percent"]);
+                    extArr[0] = parseInt(result["upload_extension"][j]["percent"]);
                     break;
                 case "jpg":
-                    extArr[1] = parseInt(result["extension"][j]["percent"]);                    
+                    extArr[1] = parseInt(result["upload_extension"][j]["percent"]);                    
                     break;
                 case "pdf":
-                    extArr[2] = parseInt(result["extension"][j]["percent"]);                
+                    extArr[2] = parseInt(result["upload_extension"][j]["percent"]);                
                     break;
                 case "xlsx":
-                    extArr[3] = parseInt(result["extension"][j]["percent"]);                    
+                    extArr[3] = parseInt(result["upload_extension"][j]["percent"]);                    
                     break;
                 case "docx":
-                    extArr[4] = parseInt(result["extension"][j]["percent"]);                    
+                    extArr[4] = parseInt(result["upload_extension"][j]["percent"]);                    
                     break;
                 case "zip":
-                    extArr[5] = parseInt(result["extension"][j]["percent"]);                                       
+                    extArr[5] = parseInt(result["upload_extension"][j]["percent"]);                                       
                     break;
             
                 default:
-                    extArr[6] += parseInt(result["extension"][j]["percent"]);
+                    extArr[6] += parseInt(result["upload_extension"][j]["percent"]);
                     break;
+            }
+
+            for (let k = 0; k < result["download_extension"].length; k++) {
+                extension_download = result["download_extension"][k]["extension"];
+    
+                switch (extension_download) {
+                    case "png":
+                        extUpArr[0] = parseInt(result["download_extension"][k]["percent"]);
+                        break;
+                    case "jpg":
+                        extUpArr[1] = parseInt(result["download_extension"][k]["percent"]);                    
+                        break;
+                    case "pdf":
+                        extUpArr[2] = parseInt(result["download_extension"][k]["percent"]);                
+                        break;
+                    case "xlsx":
+                        extUpArr[3] = parseInt(result["download_extension"][k]["percent"]);                    
+                        break;
+                    case "docx":
+                        extUpArr[4] = parseInt(result["download_extension"][k]["percent"]);                    
+                        break;
+                    case "zip":
+                        extUpArr[5] = parseInt(result["download_extension"][k]["percent"]);                                       
+                        break;
+                
+                    default:
+                        extUpArr[6] += parseInt(result["download_extension"][k]["percent"]);
+                        break;
+                }
+            }
+
+            for (let l = 0; l < result["download"].length; l++) {
+                jour = parseInt(result["download"][l]["day"]);
+                if(jour === 1) {
+                    downloadArr[6] = result["download"][l]["nbr"];   
+                } else {
+                    downloadArr[(jour - 2)] = result["download"][l]["nbr"];
+                }
             }
             // if(extension === "") {
             //     extArr[6] = result["extension"][j]["nbr"];   
@@ -206,6 +296,8 @@ function changeWeek() {
 
         chartBar();
         chartPie();
+        chartPie2();
+        chartLine();
         
     });
 
@@ -217,35 +309,7 @@ function changeWeek() {
 
 
 
-
-new Chart(document.getElementById("line-chart"), {
-    type: 'line',
-    data: {
-      labels: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"],
-      datasets: [{ 
-          data: [2478,5267,734,784,433,675,968],
-          label: "Fichiers téléchargés",
-          borderColor: "#3e95cd",
-          fill: false
-        }]
-    },
-    options: {
-      title: {
-        display: true,
-        text: 'Nombre de fichiers téléchargés semaine'
-      }
-    }
-  });
-
-
-
-
-//   function addData(data) {
-//     dataset.data.push(data);
-//     chart.update();
-// }
-
-  
+ 
 
   function chartBar () {
     bar_chart = new Chart(document.getElementById("bar-chart"), {
@@ -265,7 +329,17 @@ new Chart(document.getElementById("line-chart"), {
           title: {
             display: true,
             text: 'Nombre de fichiers envoyés semaine ' + sel.value
-          }
+          },
+          scales: {
+            yAxes: [{
+                display: true,
+                ticks: {
+                    suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
+                    // OR //
+                    beginAtZero: true   // minimum value will be 0.
+                }
+            }]
+        }
         }
     });
   }
@@ -290,6 +364,59 @@ new Chart(document.getElementById("line-chart"), {
     });
   }
 
+  function chartPie2 () {
+    pie_chart2 = new Chart(document.getElementById("pie-chart2"), {
+        type: 'pie',
+        data: {
+          labels: ["png", "jpg", "pdf", "xlsx", "docx", "zip", "Autres"],
+          datasets: [{
+            label: "Extensions fichiers",
+            backgroundColor: ["#3e95cd", "#8e5ea2","#248f24","#ff9933","#ff4d4d","#e6e600","#999999" ],
+            data: extUpArr
+          }]
+        },
+        options: {
+          title: {
+            display: true,
+            text: "Pourcentage de téléchargements par type d'extension semaine " + sel.value
+          }
+        }
+    });
+  }
+
+  function chartLine () {
+    line_chart = new Chart(document.getElementById("line-chart"), {
+        type: 'line',
+        data: {
+        labels: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"],
+        datasets: [{ 
+            data: downloadArr,
+            label: "Fichiers téléchargés",
+            borderColor: "#3e95cd",
+            fill: false
+            }]
+        },
+        options: {
+        title: {
+            display: true,
+            text: 'Nombre de fichiers téléchargés semaine'
+        },
+        scales: {
+            yAxes: [{
+                display: true,
+                ticks: {
+                    suggestedMin: 0,
+                    // suggestedMax: 2,
+                    // minimum will be 0, unless there is a lower value.
+                    // OR //
+                    beginAtZero: true   // minimum value will be 0.
+                }
+            }]
+        }
+        }
+    });
+   }
+
 
   // SELECT COUNT(link_id) AS nbr FROM file_upload
   // SELECT COUNT(link_id) AS nbr FROM file_upload GROUP BY upload_date
@@ -310,3 +437,18 @@ new Chart(document.getElementById("line-chart"), {
   // Select extension, ROUND((Count(extension)* 100 / (Select Count(*) From file_upload WHERE (WEEK(upload_date) = 50 AND DAYOFWEEK(upload_date) != 1 ) OR (WEEK(upload_date) = 51 AND DAYOFWEEK(upload_date) = 1)))) as percent
   // From file_upload WHERE (WEEK(upload_date) = 50 AND DAYOFWEEK(upload_date) != 1 ) OR (WEEK(upload_date) = 51 AND DAYOFWEEK(upload_date) = 1)
   // Group By extension
+
+
+//   SELECT extension, ROUND((Count(extension)* 100 / 
+//         (SELECT Count(*) FROM file_download 
+//         WHERE (WEEK(download_date) = 51 - 1 
+//         AND DAYOFWEEK(download_date) != 1 ) 
+//         OR (WEEK(download_date) = 51 
+//         AND DAYOFWEEK(download_date) = 1)))) 
+//         AS percent
+//         FROM file_download 
+//         WHERE (WEEK(download_date) = 51 - 1 
+//         AND DAYOFWEEK(download_date) != 1 ) 
+//         OR (WEEK(download_date) = 51 
+//         AND DAYOFWEEK(download_date) = 1)
+//         GROUP BY extension

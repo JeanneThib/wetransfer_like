@@ -19,7 +19,7 @@ require_once "model/connect.php";
 
 }
 
-    function bdd_displayExtension($week){
+    function bdd_uploadExtension($week){
 
         global $bdd;
         
@@ -44,6 +44,51 @@ require_once "model/connect.php";
         $response->execute();
 
         return $response->fetchAll(PDO::FETCH_ASSOC);
+
+
+}
+
+function bdd_downloadExtension($week){
+
+    global $bdd;
+    
+    $sql = "SELECT extension, ROUND((Count(extension)* 100 / 
+    (SELECT Count(*) FROM file_download 
+    WHERE (WEEK(download_date) = :week - 1 
+    AND DAYOFWEEK(download_date) != 1 ) 
+    OR (WEEK(download_date) = :week 
+    AND DAYOFWEEK(download_date) = 1)))) 
+    AS percent
+    FROM file_download 
+    WHERE (WEEK(download_date) = :week - 1 
+    AND DAYOFWEEK(download_date) != 1 ) 
+    OR (WEEK(download_date) = :week 
+    AND DAYOFWEEK(download_date) = 1)
+    GROUP BY extension";
+    
+    $response = $bdd->prepare( $sql );
+    $response->bindParam(':week', $week, PDO::PARAM_INT);
+    
+    $response->execute();
+
+    return $response->fetchAll(PDO::FETCH_ASSOC);
+
+
+}
+
+function bdd_displayDownload($week){
+
+    global $bdd;
+    
+    $sql = "SELECT DAYOFWEEK(download_date) AS day, COUNT(DAYOFWEEK(download_date)) AS nbr 
+    FROM file_download WHERE (WEEK(download_date) = :week - 1 AND DAYOFWEEK(download_date) != 1 ) OR (WEEK(download_date) = :week AND DAYOFWEEK(download_date) = 1)
+    GROUP BY DAYOFWEEK(download_date)";
+    
+    $response = $bdd->prepare( $sql );
+    $response->bindParam(':week', $week, PDO::PARAM_INT);
+    $response->execute();
+
+    return $response->fetchAll(PDO::FETCH_ASSOC);
 
 
 }
