@@ -99,7 +99,7 @@ function verifUpload(){
         error_reporting( E_ALL );
         
         $from = "WeTransfer@file.com";
-        
+
         if (($_POST["destinataire"] != "") && (filter_var($_POST["destinataire"], FILTER_VALIDATE_EMAIL))){
 
             $to = $_POST["destinataire"];
@@ -114,8 +114,6 @@ function verifUpload(){
             $to = '"';
         
         }
-        
-        var_dump($to);
 
         $subject = "Un fichier est à votre disposition";
 
@@ -141,8 +139,7 @@ function verifUpload(){
         $message.= $passage_ligne."--".$boundary."--".$passage_ligne;
         $message.= $passage_ligne."--".$boundary."--".$passage_ligne;
         //==========
-        
-        // Envoi de l'email
+
         if (mail($to,$subject,$message_html, $header) === false){
 
             $verifMail = false;
