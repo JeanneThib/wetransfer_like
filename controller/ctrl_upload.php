@@ -1,5 +1,5 @@
 <?php
-require_once "model/mdl_upload.php";
+require_once 'model/mdl_upload.php';
 require_once 'vendor/autoload.php';
 
 $loader = new Twig_Loader_Filesystem('view');
@@ -85,7 +85,7 @@ function verifUpload(){
 
         // Si $resultat = true
         if ($resultat){
-            $dlLink = 'https://antoninl.promo-23.codeur.online/wetransfer_like/download/show/' . $full;
+            $dlLink = 'https://jeannet.promo-23.codeur.online/wetransfer_like/download/show/' . $full;
         };
 
         // ===== ENVOI BDD =====
