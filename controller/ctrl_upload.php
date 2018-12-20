@@ -28,11 +28,15 @@ function verifUpload(){
 
     $_FILES['fichier']['name'];     //Le idnom original du fichier, comme sur le disque du visiteur (exemple : mon_icone.png).
     $_FILES['fichier']['type'];     //Le type du fichier. Par exemple, cela peut être « image/png ».
-    $_FILES['fichier']['size'];     //La taille du fichier en octets.
+    $fileSize = $_FILES['fichier']['size'];     //La taille du fichier en octets.
     $_FILES['fichier']['tmp_name']; //L'adresse vers le fichier uploadé dans le répertoire temporaire.
     $_FILES['fichier']['error'];    //Le code d'erreur, qui permet de savoir si le fichier a bien été uploadé.
 
-    // if ($_FILES['fichier']['size'] != 0 && $_FILES['fichier']['size'] < $_POST['MAX_FILE_SIZE']){
+    // Taille maximale autorisée en octets (2Mo)
+    $maxSize = 2048576;
+    if ((($fileSize > 0) && ($fileSize < 2048576)) == 1){
+
+        $fileSize = $_FILES['fichier']['size'];
         
         // Récupération de la date de d'upload
         $date = date('Y-m-d');
@@ -49,11 +53,6 @@ function verifUpload(){
         // idNom du fichier sans l'extension
         $name = substr($_FILES['fichier']['name'], 0, -strlen($ext)-1 );
         
-        // Taille du fichier
-        $fileSize = $_FILES['fichier']['size'];
-        
-        // Taille maximale autorisée en octets (2Mo)
-        $maxSize = 2048576;
 
         // if ($_FILES['fichier']['error'] > 0) $erreur = "Erreur lors du transfert";
         // if ($_FILES['fichier']['size'] > $maxSize) $erreur = "Le fichier est trop gros";
@@ -85,25 +84,23 @@ function verifUpload(){
 
         // Si $resultat = true
         if ($resultat){
-            $dlLink = 'http://localhost:8080/wetransfer_like/download/show/' . $full;
+            $dlLink = 'https://antoninl.promo-23.codeur.online/wetransfer_like/download/show/' . $full;
         };
 
         // ===== ENVOI BDD =====
-        insertDB($name, $full, $date, $fileSize, $ext);
-
-        // if (insertDB() != false) {
+        if (insertDB($name, $full, $date, $fileSize, $ext) != false) {
         // ====== ENVOI MAIL =====
             
         ini_set( 'display_errors', 1 );
 
         error_reporting( E_ALL );
         
-        $from = "test.form@gmail.com";
+        $from = "";
         
         $to = $_POST["destinataire"].', '.$_POST["destinataire2"];
         
         
-        $subject = "Vérification PHP mail";
+        $subject = "Un fichier est à votre disposition";
         
 
         // Déclaration du message en HTML
@@ -130,21 +127,35 @@ function verifUpload(){
         //==========
         
         // Envoi de l'email
-        mail($to,$subject,$message_html, $header);
-//         if (mail() == false){
-//             echo "L'envoi du mail a échoué.";    
-//         }
-        
-    // } else {
-//         echo "L'enregistrement a échoué ";
-//     }
-// } else {
-//     echo 'Taille de fichier invalide';
-// }
+        if (mail($to,$subject,$message_html, $header) != false){
 
-global $twig, $base_url;
-echo $twig->render('view_verifUpload.twig',
-array('base_url'=>$base_url, 'nom' => $fullName, 'taille' => $fileSize, 'lien' => $dlLink));
+            global $twig, $base_url;
+            echo $twig->render('view_verifUpload.twig',
+            array('base_url'=>$base_url,'titre' => 'Transfert réussit !', 'nom' => $fullName, 'taille' => $fileSize, 'lien' => $dlLink));
+            
+        } else {
+            
+            global $twig, $base_url;
+            echo $twig->render('view_verifUpload.twig',
+            array('base_url'=>$base_url,'titre' => 'Un problème est survenu.', 'description' => "L'envoi du mail a échoué."));
+
+        }
+        
+    } else {
+            
+        global $twig, $base_url;
+        echo $twig->render('view_verifUpload.twig',
+        array('base_url'=>$base_url,'titre' => 'Un problème est survenu.', 'description' => "Il semblerait que l'enregistrement de votre fichier n'est pas fonctionné "));
+    }
+
+} else {
+            
+    global $twig, $base_url;
+    echo $twig->render('view_verifUpload.twig',
+    array('base_url'=>$base_url,'titre' => 'Un problème est survenu.', 'description' => "Votre fichier n'a pas pu être enregistré par nos services."));
+
+}
+
 
 }
 ?>
