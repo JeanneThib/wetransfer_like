@@ -13,18 +13,18 @@ $id = (count($requete) < 4) ? 0 : (int)$requete[3];
 switch ($controller) {
     
     case 'download':
-    require_once('controller/ctrl_download.php');
+        require_once('controller/ctrl_download.php');
     break;
     
     case 'admin':
-    require_once('controller/ctrl_admin.php');
+        require_once('controller/ctrl_admin.php');
     break;
 
     case 'dashboard':
-    require_once('controller/ctrl_dashboard.php');
+        require_once('controller/ctrl_dashboard.php');
     break;
 
     default:
         require_once('controller/ctrl_upload.php');
-        break;
+    break;
 }
