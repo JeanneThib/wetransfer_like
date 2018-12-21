@@ -8,6 +8,12 @@
   width: 69px;
 }
 
+@media (max-width: 500px) {
+  .deconnect {
+    width: 53px !important;
+    height: 45px !important;
+  }
+}
 #upload {
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-weight: 100;

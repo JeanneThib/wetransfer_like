@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>wetransfer Groupe 2</title>
+  <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
     crossorigin="anonymous">
   <link href="css/style.css" rel="stylesheet">
@@ -27,10 +28,10 @@
       </fieldset>
       <fieldset>
       {% if taille < 1000 %}
-        <h8>{{taille}} Ko</h8>
+        <h8>{{taille | number_format(2)}} Ko</h8>
         {% else %}
-        <h8>{{(taille / 1000) | number_format(2)}} Mo</h8>
-        {% endif %}
+        <h8>{{(taille / 1000) | number_format(2)}} Mo</h8> 
+      {% endif %}
       </fieldset>
       <fieldset>
         <h7 class="result">Lien de votre fichier envoyé :</h7>

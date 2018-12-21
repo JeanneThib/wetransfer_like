@@ -38,7 +38,7 @@ function verifUpload(){
     if ((($fileSize > 0) && ($fileSize < 2048576)) == 1){
 
         $fileSize = $_FILES['fichier']['size'];
-        
+        $fileSize /= 1000;
         // Récupération de la date de d'upload
         $date = date('Y-m-d');
 
@@ -85,7 +85,11 @@ function verifUpload(){
 
         // Si $resultat = true
         if ($resultat){
-            $dlLink = 'https://antoninl.promo-23.codeur.online/wetransfer_like/download/show/' . $full;
+
+           
+
+            $dlLink = 'https://jeannet.promo-23.codeur.online/wetransfer_like/download/show/' . $full;
+
         };
 
         // ===== ENVOI BDD =====
@@ -98,7 +102,7 @@ function verifUpload(){
 
         error_reporting( E_ALL );
         
-        $from = "WeTransfer@file.com";
+        $from = "PushYourFiles@file.com";
 
         if (($_POST["destinataire"] != "") && (filter_var($_POST["destinataire"], FILTER_VALIDATE_EMAIL))){
 
@@ -116,7 +120,7 @@ function verifUpload(){
         
         }
 
-        $subject = "Un fichier est à votre disposition";
+        $subject = "Push Your Files : Un fichier est à votre disposition";
 
         // Déclaration du message en HTML
         $message_html = $twig->render('mail.twig',array("url" => $dlLink));
@@ -125,7 +129,7 @@ function verifUpload(){
         // Création de la boundary
         $boundary = "-----=".md5(rand());
         // Création du header de l'email
-        $header = "From: \"WeTransfer\"<".$from.">".$passage_ligne;
+        $header = "From: \"Push Your Files\"<".$from.">".$passage_ligne;
         $header.= "MIME-Version: 1.0".$passage_ligne;
         $header .= "Content-Type: text/html; charset=\"UTF8\"";
         // Création du message
