@@ -88,7 +88,7 @@ function verifUpload(){
 
            
 
-            $dlLink = 'https://jeannet.promo-23.codeur.online/wetransfer_like/download/show/' . $full;
+            $dlLink = 'https://antoninl.promo-23.codeur.online/wetransfer_like/download/show/' . $full;
 
         };
 
