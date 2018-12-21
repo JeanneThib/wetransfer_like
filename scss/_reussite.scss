@@ -1,6 +1,7 @@
 #resultat {
     font-family: "Roboto", Helvetica, Arial, sans-serif;
     font-weight: 100;
+    
     font-size: 12px;
     line-height: 30px;
     color: #777;
@@ -26,9 +27,10 @@
     color: black;
   }
 
-  .btn{
+  .buttonLink{
     background-color: #c01013 !important;
     color: white !important;
+    
   }
   
   @media (max-width: 401px) {

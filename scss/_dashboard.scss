@@ -1,12 +1,23 @@
-#charts {
-    // width: 60%;
-}
+
 
 #week {
     width: 200px;
 }
 
 .deconnect{
-    margin-top: 0px !important;
+    margin-top: 0px !important ;
     width: 69px;
+    
+
+    
 }
+
+@media (max-width : 500px) {
+    .deconnect {
+        width: 53px !important;
+        height: 45px !important;
+       
+        
+    }
+}
+
