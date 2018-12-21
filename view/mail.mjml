@@ -12,7 +12,7 @@
     <mj-section background-color="#fafafa">
        <mj-image src="http://www.fb.iaka.net/IMG/jpg/joyeux_noel_0003_banniere.jpg" alt="joyeux noel"></mj-image>
       <mj-column>
-        <mj-text align="center" font-style="italic"   font-size="20px" color="#626262">We transfer vous informes</mj-text>
+        <mj-text align="center" font-style="italic"   font-size="20px" color="#626262">Push Your Files vous informes</mj-text>
         </mj-column>
     </mj-section>
     <mj-section background-color="#fafafa">
