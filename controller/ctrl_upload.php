@@ -38,7 +38,7 @@ function verifUpload(){
     if ((($fileSize > 0) && ($fileSize < 2048576)) == 1){
 
         $fileSize = $_FILES['fichier']['size'];
-        
+        $fileSize /= 1000;
         // Récupération de la date de d'upload
         $date = date('Y-m-d');
 
@@ -85,7 +85,7 @@ function verifUpload(){
 
         // Si $resultat = true
         if ($resultat){
-            $dlLink = 'https://jeannet.promo-23.codeur.online/wetransfer_like/download/show/' . $full;
+            $dlLink = 'https://julesp.promo-23.codeur.online/wetransfer_like/download/show/' . $full;
         };
 
         // ===== ENVOI BDD =====
