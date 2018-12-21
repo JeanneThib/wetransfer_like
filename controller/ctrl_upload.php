@@ -85,11 +85,11 @@ function verifUpload(){
 
         // Si $resultat = true
         if ($resultat){
-<<<<<<< HEAD
-            $dlLink = 'https://antoninl.promo-23.codeur.online/wetransfer_like/download/show/' . $full;
-=======
-            $dlLink = 'https://julesp.promo-23.codeur.online/wetransfer_like/download/show/' . $full;
->>>>>>> origin/jules
+
+           
+
+            $dlLink = 'https://jeannet.promo-23.codeur.online/wetransfer_like/download/show/' . $full;
+
         };
 
         // ===== ENVOI BDD =====
