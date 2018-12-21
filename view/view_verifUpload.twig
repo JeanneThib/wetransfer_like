@@ -28,10 +28,10 @@
       </fieldset>
       <fieldset>
       {% if taille < 1000 %}
-        <h8>{{taille}} Ko</h8>
+        <h8>{{taille | number_format(2)}} Ko</h8>
         {% else %}
-        <h8>{{(taille / 1000) | number_format(2)}} Mo</h8>
-        {% endif %}
+        <h8>{{(taille / 1000) | number_format(2)}} Mo</h8> 
+      {% endif %}
       </fieldset>
       <fieldset>
         <h7 class="result">Lien de votre fichier envoyé :</h7>
